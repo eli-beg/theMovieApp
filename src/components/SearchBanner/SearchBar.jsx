@@ -1,7 +1,7 @@
 import { Box, Button, TextField } from "@mui/material";
 import React from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ matches }) => {
   console.log("hola");
   return (
     <Box
@@ -15,25 +15,40 @@ const SearchBar = () => {
         zIndex: "3",
       }}
     >
-      <TextField
-        hiddenLabel
-        sx={{
-          width: "100%",
-          "& .MuiInputBase-root": {
-            height: { md: 35, lg: 55 },
-          },
-        }}
-        placeholder="Search for a movie..."
-      />
+      {matches ? (
+        <TextField
+          hiddenLabel
+          sx={{
+            width: "100%",
+            "& .MuiInputBase-root": {
+              height: 55,
+            },
+          }}
+          placeholder="Search for a movie..."
+        />
+      ) : (
+        <TextField
+          hiddenLabel
+          sx={{
+            width: "100%",
+            "& .MuiInputBase-root": {
+              height: 34,
+            },
+          }}
+          placeholder="Search for a movie..."
+        />
+      )}
+
       <Button
         variant="contained"
         sx={{
           position: "absolute",
           left: "90%",
+          right: 1,
           zIndex: "4",
-          height: { md: "35px", lg: "55px" },
-          width: { md: "80px", lg: "125px" },
-          fontSize: { md: ".8rem", lg: "1rem" },
+          height: { xs: "36px", md: "55px" },
+          width: { xs: "80px", md: "125px", xl: "180px" },
+          fontSize: { xs: ".7rem", md: "1rem" },
         }}
       >
         Search

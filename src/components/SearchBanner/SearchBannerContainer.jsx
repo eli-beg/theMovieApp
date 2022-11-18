@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, useTheme, useMediaQuery } from "@mui/material";
 import SearchBanner from "./SearchBanner";
 import getBannerImage from "../../api/bannerImage";
 
 const SearchBannerContainer = () => {
   const [imageBanner, setImageBanner] = useState(null);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("md"));
 
   const getImage = useCallback(async () => {
     try {
@@ -27,7 +29,7 @@ const SearchBannerContainer = () => {
 
   return (
     <Box>
-      <SearchBanner imageBanner={imageBanner} />
+      <SearchBanner imageBanner={imageBanner} matches={matches} />
     </Box>
   );
 };
