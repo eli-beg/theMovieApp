@@ -45,6 +45,7 @@ const SearchBar = ({
             height: { xs: "36px", md: "55px" },
             width: { xs: "80px", md: "125px", xl: "180px" },
             fontSize: { xs: ".7rem", md: "1rem" },
+            backgroundColor: "#00CBB5",
           }}
         >
           Search
