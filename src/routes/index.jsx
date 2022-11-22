@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomeContainer from "../components/Home/HomeContainer";
 import MultiSearchContainer from "../components/MultiSearch/MultiSearchContainer";
+import HomeContainer from "../components/Home/HomeContainer";
 import MainLayout from "../pages/MainLayout";
 
 const Router = () => {

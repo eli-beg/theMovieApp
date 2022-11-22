@@ -11,7 +11,7 @@ const SearchBar = ({
     <Box
       sx={{
         position: "absolute",
-        top: "40%",
+        top: "43%",
         left: "50%",
         transform: "translate(-50%,-50%)",
         width: "80%",

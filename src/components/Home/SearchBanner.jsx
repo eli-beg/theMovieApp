@@ -17,7 +17,7 @@ const SearchBanner = ({
         alt="img not found"
         sx={{
           width: "100%",
-          height: { xs: "250px", md: "500px" },
+          height: { xs: "340px", md: "500px" },
           objectFit: "cover",
           objectPosition: "0px 0px",
           zIndex: "1",
@@ -26,13 +26,13 @@ const SearchBanner = ({
       <Box
         sx={{
           position: "absolute",
-          top: 22,
+          top: 20,
           bottom: 0,
           right: 0,
           left: 0,
           backgroundColor: "rgba(3,37,65,0.5)",
           width: "100%",
-          height: { xs: "250px", md: "500px" },
+          height: { xs: "320px", md: "480px" },
           objectFit: "cover",
           zIndex: "2",
         }}
@@ -44,7 +44,7 @@ const SearchBanner = ({
         style={{
           position: "absolute",
           color: "white",
-          top: "20%",
+          top: "23%",
           left: "50%",
           transform: "translate(-50%,-40%)",
           textAlign: "left",
@@ -61,7 +61,7 @@ const SearchBanner = ({
         style={{
           position: "absolute",
           color: "white",
-          top: "30%",
+          top: "33%",
           left: "50%",
           transform: "translate(-50%,-50%)",
           textAlign: "left",
