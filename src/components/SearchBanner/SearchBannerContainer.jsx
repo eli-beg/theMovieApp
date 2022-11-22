@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Box, useTheme, useMediaQuery } from "@mui/material";
 import SearchBanner from "./SearchBanner";
-import getBannerImage from "../../api/bannerImage";
+import { getBannerImage, getMultiSearch } from "../../api/bannerImage";
 
 const SearchBannerContainer = () => {
   const [imageBanner, setImageBanner] = useState(null);
+  const [dataSearch, setDataSearch] = useState("");
+  const [data, setData] = useState(null);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
 
@@ -27,9 +29,31 @@ const SearchBannerContainer = () => {
     getImage();
   }, [getImage]);
 
+  const handleChangeSearchValue = (e) => {
+    setDataSearch(e.target.value);
+  };
+  console.log(dataSearch);
+
+  const handleSubmitSearch = async (e) => {
+    e.preventDefault();
+
+    const data = await getMultiSearch(dataSearch);
+    if (data) {
+      setData(data);
+    }
+  };
+
+  console.log(data);
+
   return (
     <Box>
-      <SearchBanner imageBanner={imageBanner} matches={matches} />
+      <SearchBanner
+        imageBanner={imageBanner}
+        matches={matches}
+        dataSearch={dataSearch}
+        handleSubmitSearch={handleSubmitSearch}
+        handleChangeSearchValue={handleChangeSearchValue}
+      />
     </Box>
   );
 };

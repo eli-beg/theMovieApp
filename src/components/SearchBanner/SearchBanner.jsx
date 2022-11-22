@@ -2,7 +2,13 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import SearchBar from "./SearchBar";
 
-const SearchBanner = ({ matches, imageBanner }) => {
+const SearchBanner = ({
+  matches,
+  imageBanner,
+  dataSearch,
+  handleSubmitSearch,
+  handleChangeSearchValue,
+}) => {
   return (
     <>
       <Box
@@ -65,7 +71,13 @@ const SearchBanner = ({ matches, imageBanner }) => {
       >
         Millions of movies, TV shows and people to discover. Explore now.
       </Typography>
-      <SearchBar matches={matches} />
+      <SearchBar
+        imageBanner={imageBanner}
+        matches={matches}
+        dataSearch={dataSearch}
+        handleSubmitSearch={handleSubmitSearch}
+        handleChangeSearchValue={handleChangeSearchValue}
+      />
     </>
   );
 };
