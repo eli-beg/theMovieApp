@@ -1,16 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, useTheme, useMediaQuery } from "@mui/material";
-import SearchBanner from "./SearchBanner";
-import { getBannerImage, getMultiSearch } from "../../api/bannerImage";
-import MultiSearchContainer from "../MultiSearch/MultiSearchContainer";
+import SearchBanner from "../components/Home/SearchBanner";
+import { getBannerImage } from "../api/bannerImage";
 
 const HomeContainer = () => {
   const [imageBanner, setImageBanner] = useState(null);
   const [dataSearch, setDataSearch] = useState("");
-  const [data, setData] = useState(null);
   const theme = useTheme();
   const navigate = useNavigate();
+
   const matches = useMediaQuery(theme.breakpoints.up("md"));
 
   const getImage = useCallback(async () => {
@@ -35,19 +34,11 @@ const HomeContainer = () => {
   const handleChangeSearchValue = (e) => {
     setDataSearch(e.target.value);
   };
-  console.log(dataSearch);
 
   const handleSubmitSearch = async (e) => {
     e.preventDefault();
-
-    const data = await getMultiSearch(dataSearch);
-    if (data) {
-      setData(data);
-      navigate("/search");
-    }
+    navigate(`/search/${dataSearch}`);
   };
-
-  console.log(data);
 
   return (
     <Box>
@@ -58,7 +49,6 @@ const HomeContainer = () => {
         handleSubmitSearch={handleSubmitSearch}
         handleChangeSearchValue={handleChangeSearchValue}
       />
-      {data ? <MultiSearchContainer data={data} /> : null}
     </Box>
   );
 };
