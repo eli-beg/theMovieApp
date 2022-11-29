@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getMultiSearch } from "../api/bannerImage";
 import SearchCard from "../components/SearchCard/SearchCard";
@@ -40,7 +40,7 @@ const MultiSearchContainer = () => {
         {" "}
         {dataSearch &&
           dataSearch.map((data) => (
-            <Grid item>
+            <Grid item key={data.id}>
               <SearchCard data={data} />
             </Grid>
           ))}
