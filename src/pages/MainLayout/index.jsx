@@ -8,7 +8,11 @@ const MainLayout = () => (
     <Grid item width="100%">
       <HeaderContainer />
     </Grid>
-    <Grid item width="100%">
+    <Grid
+      item
+      width="100%"
+      sx={{ marginTop: { xs: "56px", sm: "64px", md: "68px" } }}
+    >
       <Outlet />
     </Grid>
   </Grid>
