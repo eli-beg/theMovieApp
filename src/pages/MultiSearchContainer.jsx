@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Grid } from "@mui/material";
-import { useParams } from "react-router-dom";
-import { getMultiSearch } from "../api/bannerImage";
+import { useNavigate, useParams } from "react-router-dom";
+import { getMultiSearch } from "../api/searchItems";
 import SearchCard from "../components/SearchCard/SearchCard";
 
 const MultiSearchContainer = () => {
   const [dataSearch, setDataSearch] = useState(null);
   const search = useParams();
+  const navigate = useNavigate();
 
   const getSearch = useCallback(async () => {
     try {
@@ -23,6 +24,10 @@ const MultiSearchContainer = () => {
   useEffect(() => {
     getSearch();
   }, [getSearch]);
+
+  const handleOpenDetails = (id) => {
+    navigate(`/details/${id}`);
+  };
 
   return (
     <>
@@ -42,7 +47,7 @@ const MultiSearchContainer = () => {
           dataSearch.map((data) =>
             data.original_title ? (
               <Grid item key={data.id}>
-                <SearchCard data={data} />
+                <SearchCard data={data} handleOpenDetails={handleOpenDetails} />
               </Grid>
             ) : null
           )}

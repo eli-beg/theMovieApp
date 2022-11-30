@@ -2,8 +2,8 @@ import React from "react";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import imageNotFound from "../../images/imagenotfound.png";
 
-const SearchCard = ({ data }) => {
-  const { original_title, poster_path, overview, release_date } = data;
+const SearchCard = ({ data, handleOpenDetails }) => {
+  const { id, original_title, poster_path, overview, release_date } = data;
 
   return (
     <Card
@@ -23,7 +23,8 @@ const SearchCard = ({ data }) => {
             : imageNotFound
         }
         alt="img not found"
-        sx={{ width: "130px", heigth: "170px" }}
+        sx={{ width: "130px", heigth: "170px", cursor: "pointer" }}
+        onClick={() => handleOpenDetails(id)}
       />
       <CardContent
         sx={{
@@ -43,7 +44,11 @@ const SearchCard = ({ data }) => {
               display: "-webkit-box",
               WebkitLineClamp: "1",
               WebkitBoxOrient: "vertical",
+              cursor: "pointer",
             }}
+            paragraph
+            component="span"
+            onClick={() => handleOpenDetails(id)}
           >
             {original_title}
           </Typography>

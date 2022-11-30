@@ -3,6 +3,7 @@ import { Routes, Route, useParams } from "react-router-dom";
 import MultiSearchContainer from "../pages/MultiSearchContainer";
 import HomeContainer from "../pages/HomeContainer";
 import MainLayout from "../pages/MainLayout";
+import DetailsCardContainer from "../pages/DetailsCardContainer";
 
 const Router = () => {
   const dataSearch = useParams();
@@ -16,6 +17,7 @@ const Router = () => {
             path="/search/:dataSearch"
             element={<MultiSearchContainer />}
           />
+          <Route path="/details/:id" element={<DetailsCardContainer />} />
         </Route>
       </Routes>
     </>
