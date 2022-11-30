@@ -7,11 +7,25 @@ const getBannerImage = async () => {
   return data;
 };
 
-const getMultiSearch = async (query) => {
-  const dataPage = await axios.get(
-    `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`
+const getMovieSearch = async (query) => {
+  const dataMovie = await axios.get(
+    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`
   );
-  return dataPage;
+  return dataMovie;
 };
 
-export { getBannerImage, getMultiSearch };
+const getTvSearch = async (query) => {
+  const dataTv = await axios.get(
+    `https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`
+  );
+  return dataTv;
+};
+
+const getPersonSearch = async (query) => {
+  const dataTv = await axios.get(
+    `https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`
+  );
+  return dataTv;
+};
+
+export { getBannerImage, getMovieSearch, getTvSearch, getPersonSearch };

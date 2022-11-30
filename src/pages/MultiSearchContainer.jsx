@@ -1,20 +1,35 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Grid } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import { getMultiSearch } from "../api/searchItems";
+import {
+  getMovieSearch,
+  getPersonSearch,
+  getTvSearch,
+} from "../api/searchItems";
 import SearchCard from "../components/SearchCard/SearchCard";
+import SearchCategoriesContainer from "../components/SearchCategories/SearchCategoriesContainer";
 
 const MultiSearchContainer = () => {
-  const [dataSearch, setDataSearch] = useState(null);
+  const [dataMovieSearch, setDataMovieSearch] = useState(null);
+  const [dataTvSearch, setDataTvSearch] = useState(null);
+  const [dataPersonSearch, setDataPersonSearch] = useState(null);
   const search = useParams();
   const navigate = useNavigate();
 
   const getSearch = useCallback(async () => {
     try {
-      const data = await getMultiSearch(search.dataSearch);
-      if (data.status === 200) {
-        setDataSearch(data.data.results);
-        console.log(data.data.total_results); // aca tengo la cantidad total que devuelve la llamada, en base a esto haremos la paginacion
+      const dataMovie = await getMovieSearch(search.dataSearch);
+      if (dataMovie.status === 200) {
+        setDataMovieSearch(dataMovie.data.results);
+        console.log(dataMovie.data.total_results); // aca tengo la cantidad total que devuelve la llamada, en base a esto haremos la paginacion
+      }
+      const dataTv = await getTvSearch(search.dataSearch);
+      if (dataTv.status === 200) {
+        setDataTvSearch(dataTv.data.results);
+      }
+      const dataPerson = await getPersonSearch(search.dataSearch);
+      if (dataPerson.status === 200) {
+        setDataPersonSearch(dataPerson.data.results);
       }
     } catch (error) {
       console.error(error);
@@ -29,12 +44,14 @@ const MultiSearchContainer = () => {
     navigate(`/details/${id}`);
   };
 
+  console.log(dataPersonSearch);
+
   return (
     <>
       <Grid
         container
+        flexDirection="row"
         justifyContent="center"
-        spacing="20"
         sx={{
           height: "100%",
           width: "100%",
@@ -42,15 +59,22 @@ const MultiSearchContainer = () => {
           ml: "0",
         }}
       >
-        {" "}
-        {dataSearch &&
-          dataSearch.map((data) =>
-            data.original_title ? (
-              <Grid item key={data.id}>
-                <SearchCard data={data} handleOpenDetails={handleOpenDetails} />
-              </Grid>
-            ) : null
-          )}
+        <Grid item lg={3} display="flex" justifyContent="center">
+          <SearchCategoriesContainer />
+        </Grid>{" "}
+        <Grid item container lg={9} spacing="20">
+          {dataMovieSearch &&
+            dataMovieSearch.map((data) =>
+              data.original_title ? (
+                <Grid item key={data.id}>
+                  <SearchCard
+                    data={data}
+                    handleOpenDetails={handleOpenDetails}
+                  />
+                </Grid>
+              ) : null
+            )}
+        </Grid>
       </Grid>
     </>
   );
