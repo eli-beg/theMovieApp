@@ -39,11 +39,13 @@ const MultiSearchContainer = () => {
       >
         {" "}
         {dataSearch &&
-          dataSearch.map((data) => (
-            <Grid item key={data.id}>
-              <SearchCard data={data} />
-            </Grid>
-          ))}
+          dataSearch.map((data) =>
+            data.original_title ? (
+              <Grid item key={data.id}>
+                <SearchCard data={data} />
+              </Grid>
+            ) : null
+          )}
       </Grid>
     </>
   );

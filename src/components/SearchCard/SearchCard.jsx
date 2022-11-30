@@ -1,10 +1,9 @@
 import React from "react";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import imageNotFound from "../../images/imagenotfound.png";
 
 const SearchCard = ({ data }) => {
   const { original_title, poster_path, overview, release_date } = data;
-
-  const image = `${process.env.REACT_APP_BASE_IMAGE_URL}${poster_path}`;
 
   return (
     <Card
@@ -18,7 +17,11 @@ const SearchCard = ({ data }) => {
     >
       <CardMedia
         component="img"
-        image={image}
+        image={
+          poster_path
+            ? `${process.env.REACT_APP_BASE_IMAGE_URL}${poster_path}`
+            : imageNotFound
+        }
         alt="img not found"
         sx={{ width: "130px", heigth: "170px" }}
       />
@@ -34,6 +37,13 @@ const SearchCard = ({ data }) => {
             fontWeight="600"
             textAlign="left"
             fontSize={{ xs: "1.2rem", lg: "1.5rem" }}
+            sx={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              display: "-webkit-box",
+              WebkitLineClamp: "1",
+              WebkitBoxOrient: "vertical",
+            }}
           >
             {original_title}
           </Typography>
