@@ -44,7 +44,17 @@ const MultiSearchContainer = () => {
     navigate(`/details/${id}`);
   };
 
-  console.log(dataPersonSearch);
+  const items = [
+    {
+      name: "Movies",
+      length: dataMovieSearch && dataMovieSearch.length,
+    },
+    { name: "Tv", length: dataTvSearch && dataTvSearch.length },
+    {
+      name: "Person",
+      length: dataPersonSearch && dataPersonSearch.length,
+    },
+  ];
 
   return (
     <>
@@ -60,7 +70,7 @@ const MultiSearchContainer = () => {
         }}
       >
         <Grid item lg={3} display="flex" justifyContent="center">
-          <SearchCategoriesContainer />
+          <SearchCategoriesContainer items={items} />
         </Grid>{" "}
         <Grid item container lg={9} spacing="20">
           {dataMovieSearch &&
