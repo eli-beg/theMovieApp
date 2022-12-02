@@ -8,15 +8,11 @@ const TextButton = styled(Button)({
   justifyContent: "space-between",
   fontFamily: ["Source Sans Pro"].join(","),
   "&:hover": {
-    backgroundColor: "#cfd8dc",
+    backgroundColor: "#eceff1",
   },
-  "&:active": {
-    boxShadow: "none",
-    backgroundColor: "#0062cc",
-    borderColor: "#005cbf",
-  },
+
   "&:focus": {
-    boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+    boxShadow: "#cfd8dc",
   },
   fontWeight: "600",
 });

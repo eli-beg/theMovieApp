@@ -2,7 +2,12 @@ import React from "react";
 import { Grid, Typography } from "@mui/material";
 import TextButton from "./TextButton";
 
-const SearchCategoriesContainer = ({ items }) => {
+const SearchCategoriesContainer = ({
+  items,
+  handleDataSearch,
+  handleActiveButton,
+  activeButton,
+}) => {
   return (
     <Grid
       container
@@ -32,7 +37,17 @@ const SearchCategoriesContainer = ({ items }) => {
       <Grid item>
         {items &&
           items.map((item) => (
-            <TextButton fullWidth>
+            <TextButton
+              key={item.id}
+              fullWidth
+              onClick={() => {
+                handleDataSearch(item.name);
+                handleActiveButton(item.name);
+              }}
+              sx={{
+                backgroundColor: activeButton === item.name ? "#eceff1" : null,
+              }}
+            >
               <Typography
                 fontFamily="Source Sans Pro"
                 fontWeight="600"

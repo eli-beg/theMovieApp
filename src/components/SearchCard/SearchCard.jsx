@@ -3,7 +3,16 @@ import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import imageNotFound from "../../images/imagenotfound.png";
 
 const SearchCard = ({ data, handleOpenDetails }) => {
-  const { id, original_title, poster_path, overview, release_date } = data;
+  const {
+    id,
+    original_title,
+    poster_path,
+    overview,
+    release_date,
+    name,
+    known_for_department,
+    first_air_date,
+  } = data;
 
   return (
     <Card
@@ -50,7 +59,7 @@ const SearchCard = ({ data, handleOpenDetails }) => {
             component="span"
             onClick={() => handleOpenDetails(id)}
           >
-            {original_title}
+            {original_title || name}
           </Typography>
           <Typography
             fontFamily="Source Sans Pro"
@@ -59,7 +68,7 @@ const SearchCard = ({ data, handleOpenDetails }) => {
             color="grey"
             fontSize={{ xs: "0.8rem", lg: "0.9rem" }}
           >
-            {release_date}
+            {release_date || known_for_department || first_air_date}
           </Typography>
         </Box>
 

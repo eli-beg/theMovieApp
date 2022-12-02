@@ -13,6 +13,8 @@ const MultiSearchContainer = () => {
   const [dataMovieSearch, setDataMovieSearch] = useState(null);
   const [dataTvSearch, setDataTvSearch] = useState(null);
   const [dataPersonSearch, setDataPersonSearch] = useState(null);
+  const [dataSearch, setDataSearch] = useState(null);
+  const [activeButton, setActiveButton] = useState("Movies");
   const search = useParams();
   const navigate = useNavigate();
 
@@ -21,20 +23,37 @@ const MultiSearchContainer = () => {
       const dataMovie = await getMovieSearch(search.dataSearch);
       if (dataMovie.status === 200) {
         setDataMovieSearch(dataMovie.data.results);
-        console.log(dataMovie.data.total_results); // aca tengo la cantidad total que devuelve la llamada, en base a esto haremos la paginacion
+        if (search.category === "movies") {
+          setDataSearch(dataMovie.data.results);
+        }
+        if (!search.category) {
+          setDataSearch(dataMovie.data.results);
+        }
       }
+
       const dataTv = await getTvSearch(search.dataSearch);
       if (dataTv.status === 200) {
         setDataTvSearch(dataTv.data.results);
+
+        if (search.category === "tv") {
+          setDataSearch(dataTv.data.results);
+        }
       }
       const dataPerson = await getPersonSearch(search.dataSearch);
       if (dataPerson.status === 200) {
         setDataPersonSearch(dataPerson.data.results);
+        if (search.category === "person") {
+          setDataSearch(dataPerson.data.results);
+        }
       }
     } catch (error) {
       console.error(error);
     }
   }, [search]);
+
+  const handleDataSearch = (name) => {
+    navigate(`/search/${name.toLowerCase()}/${search.dataSearch}`);
+  };
 
   useEffect(() => {
     getSearch();
@@ -44,13 +63,19 @@ const MultiSearchContainer = () => {
     navigate(`/details/${id}`);
   };
 
+  const handleActiveButton = (name) => {
+    setActiveButton(name);
+  };
+
   const items = [
     {
+      id: "1",
       name: "Movies",
       length: dataMovieSearch && dataMovieSearch.length,
     },
-    { name: "Tv", length: dataTvSearch && dataTvSearch.length },
+    { id: "2", name: "Tv", length: dataTvSearch && dataTvSearch.length },
     {
+      id: "3",
       name: "Person",
       length: dataPersonSearch && dataPersonSearch.length,
     },
@@ -70,12 +95,17 @@ const MultiSearchContainer = () => {
         }}
       >
         <Grid item lg={3} display="flex" justifyContent="center">
-          <SearchCategoriesContainer items={items} />
+          <SearchCategoriesContainer
+            items={items}
+            handleDataSearch={handleDataSearch}
+            handleActiveButton={handleActiveButton}
+            activeButton={activeButton}
+          />
         </Grid>{" "}
         <Grid item container lg={9} spacing="20">
-          {dataMovieSearch &&
-            dataMovieSearch.map((data) =>
-              data.original_title ? (
+          {dataSearch &&
+            dataSearch.map((data) =>
+              data.original_title || data.name ? (
                 <Grid item key={data.id}>
                   <SearchCard
                     data={data}
