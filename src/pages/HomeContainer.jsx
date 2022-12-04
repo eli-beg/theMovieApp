@@ -37,7 +37,8 @@ const HomeContainer = () => {
 
   const handleSubmitSearch = async (e) => {
     e.preventDefault();
-    navigate(`/search/${dataSearch}`);
+    const category = "movies";
+    navigate(`/search/${category}/${dataSearch}`);
   };
 
   return (

@@ -59,8 +59,8 @@ const MultiSearchContainer = () => {
     getSearch();
   }, [getSearch]);
 
-  const handleOpenDetails = (id) => {
-    navigate(`/details/${id}`);
+  const handleOpenDetails = (id, category) => {
+    navigate(`/details/${category}/${id}`);
   };
 
   const handleActiveButton = (name) => {
@@ -110,6 +110,7 @@ const MultiSearchContainer = () => {
                   <SearchCard
                     data={data}
                     handleOpenDetails={handleOpenDetails}
+                    category={search.category}
                   />
                 </Grid>
               ) : null

@@ -28,4 +28,33 @@ const getPersonSearch = async (query) => {
   return dataTv;
 };
 
-export { getBannerImage, getMovieSearch, getTvSearch, getPersonSearch };
+const getMovieDetailsSearch = async (query) => {
+  const dataMovieDetails = await axios.get(
+    `https://api.themoviedb.org/3/movie/${query}?api_key=${process.env.REACT_APP_API_KEY}`
+  );
+  return dataMovieDetails;
+};
+
+const getTvDetailsSearch = async (query) => {
+  const dataTvDetails = await axios.get(
+    `https://api.themoviedb.org/3/tv/${query}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+  );
+  return dataTvDetails;
+};
+
+const getPersonDetailsSearch = async (query) => {
+  const dataPersonDetails = await axios.get(
+    `https://api.themoviedb.org/3/person/${query}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+  );
+  return dataPersonDetails;
+};
+
+export {
+  getBannerImage,
+  getMovieSearch,
+  getTvSearch,
+  getPersonSearch,
+  getMovieDetailsSearch,
+  getTvDetailsSearch,
+  getPersonDetailsSearch,
+};

@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import MultiSearchContainer from "../pages/MultiSearchContainer";
 import HomeContainer from "../pages/HomeContainer";
 import MainLayout from "../pages/MainLayout";
-import DetailsCardContainer from "../pages/DetailsCardContainer";
+import SearchCardDetailsContainer from "../pages/SearchCardDetailsContainer";
 
 const Router = () => {
   return (
@@ -12,14 +12,13 @@ const Router = () => {
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<HomeContainer />} />
           <Route
-            path="/search/:dataSearch"
-            element={<MultiSearchContainer />}
-          />
-          <Route
             path="/search/:category/:dataSearch"
             element={<MultiSearchContainer />}
           />
-          <Route path="/details/:id" element={<DetailsCardContainer />} />
+          <Route
+            path="/details/:category/:id"
+            element={<SearchCardDetailsContainer />}
+          />
         </Route>
       </Routes>
     </>
