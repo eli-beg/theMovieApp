@@ -9,6 +9,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontFamily: "Source Sans Pro",
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {

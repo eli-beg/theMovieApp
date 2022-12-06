@@ -6,10 +6,16 @@ import {
   getPersonDetailsSearch,
   getTvDetailsSearch,
 } from "../api/searchItems";
+import { setImageUrl } from "../utils/setImageUrl";
+import { setMinutesToHours } from "../utils/setMinutesToHours";
+import { setGenresArrayToString } from "../utils/setGenresArrayToString";
 
 const SearchCardDetailsContainer = () => {
   const [dataSearchDetails, setDataSearchDetails] = useState(null);
   const [imageBanner, setImageBanner] = useState(null);
+  const [imagePoster, setImagePoster] = useState(null);
+  const [runtimeHours, setRuntimeHours] = useState(null);
+  const [genres, setGenres] = useState(null);
   const search = useParams();
 
   const getSearchDetails = useCallback(async () => {
@@ -45,9 +51,16 @@ const SearchCardDetailsContainer = () => {
 
   useEffect(() => {
     if (dataSearchDetails && dataSearchDetails.backdrop_path) {
-      setImageBanner(
-        `${process.env.REACT_APP_BASE_IMAGE_URL}${dataSearchDetails.backdrop_path}`
-      );
+      setImageBanner(setImageUrl(dataSearchDetails.backdrop_path));
+    }
+    if (dataSearchDetails && dataSearchDetails.poster_path) {
+      setImagePoster(setImageUrl(dataSearchDetails.poster_path));
+    }
+    if (dataSearchDetails && typeof dataSearchDetails.runtime === "number") {
+      setRuntimeHours(setMinutesToHours(dataSearchDetails.runtime));
+    }
+    if (dataSearchDetails && dataSearchDetails.genres) {
+      setGenres(setGenresArrayToString(dataSearchDetails.genres));
     }
   }, [dataSearchDetails]);
 
@@ -57,6 +70,9 @@ const SearchCardDetailsContainer = () => {
         <SearchCardDetails
           dataSearchDetails={dataSearchDetails}
           imageBanner={imageBanner}
+          imagePoster={imagePoster}
+          runtimeHours={runtimeHours}
+          genres={genres}
         />
       )}
     </>

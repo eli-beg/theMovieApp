@@ -43,7 +43,6 @@ const SearchCard = ({ data, handleOpenDetails, category }) => {
       >
         <Box height="60px">
           <Typography
-            fontFamily="Source Sans Pro"
             fontWeight="600"
             textAlign="left"
             fontSize={{ xs: "1.2rem", lg: "1.5rem" }}
@@ -62,7 +61,6 @@ const SearchCard = ({ data, handleOpenDetails, category }) => {
             {original_title || name}
           </Typography>
           <Typography
-            fontFamily="Source Sans Pro"
             fontWeight="600"
             textAlign="left"
             color="grey"
@@ -73,7 +71,6 @@ const SearchCard = ({ data, handleOpenDetails, category }) => {
         </Box>
 
         <Typography
-          fontFamily="Source Sans Pro"
           fontWeight="400"
           textAlign="left"
           marginTop="20px"
