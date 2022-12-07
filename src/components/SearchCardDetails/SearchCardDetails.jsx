@@ -10,174 +10,64 @@ const SearchCardDetails = ({
   runtimeHours,
   genres,
 }) => {
-  const { overview, release_date, tagline, vote_average } = dataSearchDetails;
+  const {
+    overview,
+    release_date,
+    tagline,
+    vote_average,
+    name,
+    first_air_date,
+  } = dataSearchDetails;
 
   return (
-    <Card
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        boxShadow: "none",
-        marginTop: { xs: "56px", sm: "64px", md: "40px" },
-      }}
-    >
+    <Card sx={styles.cardStyle}>
       {imageBanner ? (
         <Box
           component="img"
           src={imageBanner}
           alt="img not found"
-          sx={{
-            width: "100%",
-            height: { xs: "320px", md: "523px" },
-            objectFit: "cover",
-            filter: "brightness(50%)",
-            opacity: 0.8,
-            position: "absolute",
-            zIndex: "1",
-          }}
+          sx={styles.imageBannerContainer}
         />
       ) : (
-        <Box
-          sx={{
-            top: { xs: "112px", sm: "128px", md: "118px" },
-            backgroundColor: "rgba(3,37,65,0.4)",
-            width: "100%",
-            height: { xs: "320px", md: "523px" },
-            objectFit: "cover",
-            position: "absolute",
-            zIndex: "1",
-          }}
-        />
+        <Box sx={styles.imageBannerNotFoundContainer} />
       )}
-      <Box
-        sx={{
-          position: "relative",
-          zIndex: "2",
-          width: { xs: "100%", md: "80%" },
-          height: { xs: "250px", md: "453px" },
-          display: "flex",
-          flexDirection: "row",
-          padding: "20px",
-          backgroundColor: "blue",
-        }}
-      >
+      <Box sx={styles.contentContainer}>
         <Box
           component="img"
           src={imagePoster ? imagePoster : imageNotFound}
           alt="img not found"
-          sx={{
-            position: "relative",
-            zIndex: "2",
-            width: { xs: "168px", md: "300px" },
-            minWidth: { xs: "168px", md: "300px" },
-            maxHeight: { xs: "250px", md: "453px" },
-            objectFit: "contain",
-            borderRadius: "10px",
-            backgroundColor: "#c8c8c8",
-            backgroundSize: "50%",
-          }}
+          sx={styles.imagePosterContainer}
         />
 
-        <CardContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            backgroundColor: "pink",
-            objectFit: "contain",
-          }}
-          width="100%"
-        >
-          <Typography
-            fontSize={{ xs: "1.75rem", lg: "2.2rem" }}
-            fontWeight="700"
-            style={{
-              color: "white",
-              textAlign: "left",
-            }}
-          >
-            {dataSearchDetails.original_title}
+        <CardContent sx={styles.cardContent} width="100%">
+          <Typography sx={styles.title}>
+            {dataSearchDetails.original_title || name}
           </Typography>
-          <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            width="100%"
-            sx={{ backgroundColor: "yellow" }}
-          >
-            <Typography
-              fontSize={{ xs: "0.8rem", lg: "1.1rem" }}
-              fontWeight="400"
-              style={{
-                color: "white",
-                textAlign: "left",
-              }}
-            >
-              {release_date}
-            </Typography>
-            <Typography
-              fontSize={{ xs: "0.8rem", lg: "1.1rem" }}
-              fontWeight="400"
-              style={{
-                color: "white",
-                textAlign: "left",
-              }}
-            >
-              {runtimeHours && runtimeHours.hours}h:
-              {runtimeHours && runtimeHours.minutes}m
-            </Typography>
+          <Box sx={styles.detailsSubtitleContainer}>
+            {release_date && (
+              <Typography sx={styles.releaseDate}>{release_date}</Typography>
+            )}
+            {first_air_date && (
+              <Typography sx={styles.releaseDate}>{first_air_date}</Typography>
+            )}
+            {runtimeHours && (
+              <Typography sx={styles.runtime}>
+                {runtimeHours && runtimeHours.hours}h:
+                {runtimeHours && runtimeHours.minutes}m
+              </Typography>
+            )}
 
-            <Typography
-              fontSize={{ xs: "0.8rem", lg: "1.1rem" }}
-              fontWeight="400"
-              style={{
-                color: "white",
-                textAlign: "left",
-              }}
-            >
-              {genres}
-            </Typography>
+            <Typography sx={styles.genres}>{genres}</Typography>
           </Box>
 
-          <Typography>{vote_average}</Typography>
-          <Box sx={{ backgroundColor: "green" }}>
+          <Typography sx={{ flexGrow: "1" }}>{vote_average}</Typography>
+          <Box sx={styles.descriptionContainer}>
             {" "}
-            <Typography
-              fontSize={{ xs: "0.7rem", lg: "1.2rem" }}
-              fontStyle="italic"
-              fontWeight="400"
-              style={{
-                color: "white",
-                textAlign: "left",
-              }}
-            >
-              {tagline}
-            </Typography>
+            <Typography sx={styles.tagline}>{tagline}</Typography>
             {overview ? (
               <Box>
-                <Typography
-                  fontSize={{ xs: "0.8rem", lg: "1.5rem" }}
-                  fontWeight="700"
-                  style={{
-                    color: "white",
-                    textAlign: "left",
-                  }}
-                >
-                  Overview
-                </Typography>
-                <Typography
-                  fontSize={{ xs: "0.75rem", lg: "1.2rem" }}
-                  fontWeight="400"
-                  style={{
-                    color: "white",
-                    textAlign: "left",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    display: "-webkit-box",
-                    WebkitLineClamp: "4",
-                    WebkitBoxOrient: "vertical",
-                  }}
-                >
+                <Typography sx={styles.overviewTitle}>Overview</Typography>
+                <Typography sx={styles.detailsOverview}>
                   {dataSearchDetails.overview}
                 </Typography>
               </Box>
@@ -191,3 +81,122 @@ const SearchCardDetails = ({
 };
 
 export default SearchCardDetails;
+const styles = {
+  cardStyle: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    boxShadow: "none",
+    marginTop: { xs: "56px", sm: "64px", md: "40px" },
+  },
+  imageBannerContainer: {
+    width: "100%",
+    height: { xs: "320px", md: "523px" },
+    objectFit: "cover",
+    filter: "brightness(50%)",
+    opacity: 0.8,
+    position: "absolute",
+    zIndex: "1",
+  },
+  imageBannerNotFoundContainer: {
+    top: { xs: "112px", sm: "128px", md: "118px" },
+    backgroundColor: "rgba(3,37,65,0.4)",
+    width: "100%",
+    height: { xs: "320px", md: "523px" },
+    objectFit: "cover",
+    position: "absolute",
+    zIndex: "1",
+  },
+  contentContainer: {
+    position: "relative",
+    zIndex: "2",
+    width: { xs: "90%", md: "80%" },
+    height: { xs: "250px", md: "453px" },
+    display: "flex",
+    flexDirection: "row",
+    padding: "20px",
+  },
+  imagePosterContainer: {
+    width: { xs: "168px", md: "300px" },
+    maxHeight: { xs: "250px", md: "453px" },
+    objectFit: "contain",
+    borderRadius: "10px",
+    backgroundColor: "#c8c8c8",
+    backgroundSize: "50%",
+  },
+  cardContent: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  title: {
+    fontSize: { xs: "1.6rem", lg: "2.2rem" },
+    fontWeight: "700",
+    color: "white",
+    textAlign: "left",
+    flexGrow: "1",
+    // backgroundColor: "green",
+  },
+  detailsSubtitleContainer: {
+    width: { xs: "80%", md: "80%" },
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    flexGrow: "1",
+    // backgroundColor: "pink",
+    flexWrap: "wrap",
+  },
+  releaseDate: {
+    fontSize: { xs: "0.7rem", lg: "1.1rem" },
+    fontWeight: "600",
+    color: "white",
+    textAlign: "left",
+    flexGrow: "1",
+  },
+  runtime: {
+    fontSize: { xs: "0.7rem", lg: "1.1rem" },
+    fontWeight: "600",
+    color: "white",
+    textAlign: "left",
+    flexGrow: "1",
+  },
+  genres: {
+    fontSize: { xs: "0.7rem", lg: "1.1rem" },
+    fontWeight: "600",
+    fontStyle: "italic",
+    color: "white",
+    textAlign: "left",
+    flexGrow: "3",
+  },
+  descriptionContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    flexGrow: "2",
+    // backgroundColor: "blue",
+  },
+  tagline: {
+    fontSize: { xs: "0.7rem", lg: "1.2rem" },
+    fontStyle: "italic",
+    fontWeight: "400",
+    color: "white",
+    textAlign: "left",
+  },
+  overviewTitle: {
+    fontSize: { xs: "0.8rem", lg: "1.5rem" },
+    fontWeight: "700",
+    marginBottom: { xs: "2px", lg: "10px" },
+    color: "white",
+    textAlign: "left",
+  },
+  detailsOverview: {
+    fontSize: { xs: "0.75rem", lg: "1.2rem" },
+    fontWeight: "400",
+    color: "white",
+    textAlign: "left",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    WebkitLineClamp: "4",
+    WebkitBoxOrient: "vertical",
+  },
+};
