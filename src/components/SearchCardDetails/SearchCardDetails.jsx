@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Button, Card, CardContent, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import imageNotFound from "../../images/imagenotfound.png";
 import CircularRating from "../CircularRating";
@@ -60,15 +60,17 @@ const SearchCardDetails = ({
 
             <Typography sx={styles.genres}>{genres}</Typography>
           </Box>
-          {vote_average && (
-            <Box sx={styles.circularProgressContainer}>
-              <CircularRating rating={vote_average} sx={{ flexGrow: "1" }} />
-              <Box>
-                <Typography sx={styles.userScoreTitle}>User Score</Typography>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            {vote_average && (
+              <Box sx={styles.circularProgressContainer}>
+                <CircularRating rating={vote_average} sx={{ flexGrow: "1" }} />
+                <Box>
+                  <Typography sx={styles.userScoreTitle}>User Score</Typography>
+                </Box>
               </Box>
-            </Box>
-          )}
-
+            )}
+            <Button sx={styles.buttonTrailer}>Trailer</Button>
+          </Box>
           <Box sx={styles.descriptionContainer}>
             {" "}
             <Typography sx={styles.tagline}>{tagline}</Typography>
@@ -218,5 +220,16 @@ const styles = {
     fontSize: { xs: "0.6rem", md: "0.9rem" },
     fontWeight: "700",
     color: "white",
+  },
+  buttonTrailer: {
+    width: { xs: "70px", md: "90px" },
+    height: { xs: "30px", md: "40px" },
+    color: "white",
+    fontSize: { xs: "0.7rem", md: "0.9rem" },
+    borderStyle: "solid",
+    borderWidth: "1px",
+    ":hover": {
+      backgroundColor: "#bdbdbd",
+    },
   },
 };
