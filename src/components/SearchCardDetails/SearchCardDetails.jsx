@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import imageNotFound from "../../images/imagenotfound.png";
+import CircularRating from "../CircularRating";
 
 const SearchCardDetails = ({
   dataSearchDetails,
@@ -59,8 +60,15 @@ const SearchCardDetails = ({
 
             <Typography sx={styles.genres}>{genres}</Typography>
           </Box>
+          {vote_average && (
+            <Box sx={styles.circularProgressContainer}>
+              <CircularRating rating={vote_average} sx={{ flexGrow: "1" }} />
+              <Box>
+                <Typography sx={styles.userScoreTitle}>User Score</Typography>
+              </Box>
+            </Box>
+          )}
 
-          <Typography sx={{ flexGrow: "1" }}>{vote_average}</Typography>
           <Box sx={styles.descriptionContainer}>
             {" "}
             <Typography sx={styles.tagline}>{tagline}</Typography>
@@ -81,6 +89,7 @@ const SearchCardDetails = ({
 };
 
 export default SearchCardDetails;
+
 const styles = {
   cardStyle: {
     display: "flex",
@@ -129,7 +138,7 @@ const styles = {
     flexDirection: "column",
   },
   title: {
-    fontSize: { xs: "1.6rem", lg: "2.2rem" },
+    fontSize: { xs: "1.6rem", md: "2.2rem" },
     fontWeight: "700",
     color: "white",
     textAlign: "left",
@@ -146,21 +155,21 @@ const styles = {
     flexWrap: "wrap",
   },
   releaseDate: {
-    fontSize: { xs: "0.7rem", lg: "1.1rem" },
+    fontSize: { xs: "0.7rem", md: "1.1rem" },
     fontWeight: "600",
     color: "white",
     textAlign: "left",
     flexGrow: "1",
   },
   runtime: {
-    fontSize: { xs: "0.7rem", lg: "1.1rem" },
+    fontSize: { xs: "0.7rem", md: "1.1rem" },
     fontWeight: "600",
     color: "white",
     textAlign: "left",
     flexGrow: "1",
   },
   genres: {
-    fontSize: { xs: "0.7rem", lg: "1.1rem" },
+    fontSize: { xs: "0.7rem", md: "1.1rem" },
     fontWeight: "600",
     fontStyle: "italic",
     color: "white",
@@ -168,6 +177,7 @@ const styles = {
     flexGrow: "3",
   },
   descriptionContainer: {
+    marginTop: { md: "20px" },
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
@@ -175,21 +185,21 @@ const styles = {
     // backgroundColor: "blue",
   },
   tagline: {
-    fontSize: { xs: "0.7rem", lg: "1.2rem" },
+    fontSize: { xs: "0.7rem", md: "1.2rem" },
     fontStyle: "italic",
     fontWeight: "400",
     color: "white",
     textAlign: "left",
   },
   overviewTitle: {
-    fontSize: { xs: "0.8rem", lg: "1.5rem" },
+    fontSize: { xs: "0.8rem", md: "1.5rem" },
     fontWeight: "700",
     marginBottom: { xs: "2px", lg: "10px" },
     color: "white",
     textAlign: "left",
   },
   detailsOverview: {
-    fontSize: { xs: "0.75rem", lg: "1.2rem" },
+    fontSize: { xs: "0.75rem", md: "1.2rem" },
     fontWeight: "400",
     color: "white",
     textAlign: "left",
@@ -198,5 +208,15 @@ const styles = {
     display: "-webkit-box",
     WebkitLineClamp: "4",
     WebkitBoxOrient: "vertical",
+  },
+  circularProgressContainer: {
+    width: { xs: "80px", md: "120px" },
+    display: "flex",
+    alignItems: "center",
+  },
+  userScoreTitle: {
+    fontSize: { xs: "0.6rem", md: "0.9rem" },
+    fontWeight: "700",
+    color: "white",
   },
 };
