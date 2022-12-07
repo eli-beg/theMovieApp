@@ -49,6 +49,13 @@ const getPersonDetailsSearch = async (query) => {
   return dataPersonDetails;
 };
 
+const getTrailer = async (query, id) => {
+  const dataTrailer = await axios.get(
+    `https://api.themoviedb.org/3/${query}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
+  );
+  return dataTrailer;
+};
+
 export {
   getBannerImage,
   getMovieSearch,
@@ -57,4 +64,5 @@ export {
   getMovieDetailsSearch,
   getTvDetailsSearch,
   getPersonDetailsSearch,
+  getTrailer,
 };

@@ -4,9 +4,11 @@ import SearchCardDetails from "../components/SearchCardDetails/SearchCardDetails
 import {
   getMovieDetailsSearch,
   getPersonDetailsSearch,
+  getTrailer,
   getTvDetailsSearch,
 } from "../api/searchItems";
 import { setImageUrl } from "../utils/setImageUrl";
+import { setUrlTrailer } from "../utils/setUrlTrailer";
 import { setMinutesToHours } from "../utils/setMinutesToHours";
 import { setGenresArrayToString } from "../utils/setGenresArrayToString";
 
@@ -15,6 +17,7 @@ const SearchCardDetailsContainer = () => {
   const [imageBanner, setImageBanner] = useState(null);
   const [imagePoster, setImagePoster] = useState(null);
   const [runtimeHours, setRuntimeHours] = useState(null);
+  const [dataTrailer, setDataTrailer] = useState(null);
   const [genres, setGenres] = useState(null);
   const search = useParams();
 
@@ -25,12 +28,20 @@ const SearchCardDetailsContainer = () => {
         if (dataMovieDetails.status === 200) {
           setDataSearchDetails(dataMovieDetails.data);
         }
+        const dataTrailer = await getTrailer("movie", search.id);
+        if (dataTrailer.status === 200) {
+          setDataTrailer(dataTrailer.data.results);
+        }
       }
 
       if (search.category === "tv") {
         const dataTvDetails = await getTvDetailsSearch(search.id);
         if (dataTvDetails.status === 200) {
           setDataSearchDetails(dataTvDetails.data);
+        }
+        const dataTrailer = await getTrailer("tv", search.id);
+        if (dataTrailer.status === 200) {
+          setDataTrailer(dataTrailer.data.results);
         }
       }
 
@@ -64,6 +75,11 @@ const SearchCardDetailsContainer = () => {
     }
   }, [dataSearchDetails]);
 
+  const handleNavigateToTrailer = (dataTrailer) => {
+    const url = setUrlTrailer(dataTrailer[0].key);
+    window.open(url);
+  };
+
   return (
     <>
       {dataSearchDetails && (
@@ -73,6 +89,8 @@ const SearchCardDetailsContainer = () => {
           imagePoster={imagePoster}
           runtimeHours={runtimeHours}
           genres={genres}
+          dataTrailer={dataTrailer}
+          handleNavigateToTrailer={handleNavigateToTrailer}
         />
       )}
     </>

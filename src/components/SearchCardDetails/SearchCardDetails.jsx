@@ -10,6 +10,8 @@ const SearchCardDetails = ({
   imagePoster,
   runtimeHours,
   genres,
+  dataTrailer,
+  handleNavigateToTrailer,
 }) => {
   const {
     overview,
@@ -19,7 +21,7 @@ const SearchCardDetails = ({
     name,
     first_air_date,
   } = dataSearchDetails;
-
+  console.log("props", dataTrailer);
   return (
     <Card sx={styles.cardStyle}>
       {imageBanner ? (
@@ -69,7 +71,14 @@ const SearchCardDetails = ({
                 </Box>
               </Box>
             )}
-            <Button sx={styles.buttonTrailer}>Trailer</Button>
+            {dataTrailer && dataTrailer.length ? (
+              <Button
+                sx={styles.buttonTrailer}
+                onClick={() => handleNavigateToTrailer(dataTrailer)}
+              >
+                Trailer
+              </Button>
+            ) : null}
           </Box>
           <Box sx={styles.descriptionContainer}>
             {" "}
