@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import imageNotFound from "../../images/imagenotfound.png";
+import { setImageUrl } from "../../utils/setImageUrl";
 
 const SearchCard = ({ data, handleOpenDetails, category }) => {
   const {
@@ -26,11 +27,7 @@ const SearchCard = ({ data, handleOpenDetails, category }) => {
     >
       <CardMedia
         component="img"
-        image={
-          poster_path
-            ? `${process.env.REACT_APP_BASE_IMAGE_URL}${poster_path}`
-            : imageNotFound
-        }
+        image={poster_path ? setImageUrl(poster_path) : imageNotFound}
         alt="img not found"
         sx={{ width: "130px", heigth: "170px", cursor: "pointer" }}
         onClick={() => handleOpenDetails(id, category)}

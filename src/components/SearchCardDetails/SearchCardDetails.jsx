@@ -65,7 +65,11 @@ const SearchCardDetails = ({
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {vote_average && (
               <Box sx={styles.circularProgressContainer}>
-                <CircularRating rating={vote_average} sx={{ flexGrow: "1" }} />
+                <Box sx={styles.circularProgressContainerItem}>
+                  {" "}
+                  <CircularRating rating={vote_average} />
+                </Box>
+
                 <Box>
                   <Typography sx={styles.userScoreTitle}>User Score</Typography>
                 </Box>
@@ -221,8 +225,15 @@ const styles = {
     WebkitBoxOrient: "vertical",
   },
   circularProgressContainer: {
-    width: { xs: "80px", md: "120px" },
+    width: { xs: "80px", md: "125px" },
     display: "flex",
+    alignItems: "center",
+  },
+  circularProgressContainerItem: {
+    width: "60px",
+    height: "60px",
+    display: "flex",
+    justifyContent: "center",
     alignItems: "center",
   },
   userScoreTitle: {
