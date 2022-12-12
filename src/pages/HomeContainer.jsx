@@ -49,6 +49,10 @@ const HomeContainer = () => {
     navigate(`/search/${category}/${dataSearch}`);
   };
 
+  const handleOpenDetails = (id, category) => {
+    navigate(`/details/${category}/${id}`);
+  };
+
   return (
     <Box>
       <SearchBanner
@@ -60,7 +64,14 @@ const HomeContainer = () => {
       />
       <Box display="flex" flexWrap="wrap">
         {topRatedMovies &&
-          topRatedMovies.map((movie) => <MainCard movie={movie} />)}
+          topRatedMovies.map((movie) => (
+            <MainCard
+              key={movie.id}
+              item={movie}
+              handleOpenDetails={handleOpenDetails}
+              category="movies"
+            />
+          ))}
       </Box>
     </Box>
   );

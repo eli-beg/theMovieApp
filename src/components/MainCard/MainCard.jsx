@@ -4,25 +4,29 @@ import { setImageUrl } from "../../utils/setImageUrl";
 import imageNotFound from "../../images/imagenotfound.png";
 import CircularRating from "../CircularRating";
 
-const MainCard = ({ movie }) => {
+const MainCard = ({ item, handleOpenDetails, category }) => {
+  console.log(item);
   return (
     <Card sx={styles.cardContainer}>
       <CardMedia
         component="img"
-        image={
-          movie.poster_path ? setImageUrl(movie.poster_path) : imageNotFound
-        }
+        image={item.poster_path ? setImageUrl(item.poster_path) : imageNotFound}
         alt="img not found"
         sx={styles.cardMedia}
-        // onClick={() => handleOpenDetails(id, category)}
+        onClick={() => handleOpenDetails(item.id, category)}
       />
       <Box sx={styles.circularRatingContainer}>
-        <CircularRating rating={movie.vote_average} />
+        <CircularRating rating={item.vote_average} />
       </Box>
 
       <CardContent sx={styles.cardContentContainer}>
-        <Typography sx={styles.title}>{movie.title}</Typography>
-        <Typography sx={styles.release_date}> {movie.release_date}</Typography>
+        <Typography
+          onClick={() => handleOpenDetails(item.id, category)}
+          sx={styles.title}
+        >
+          {item.title}
+        </Typography>
+        <Typography sx={styles.release_date}> {item.release_date}</Typography>
       </CardContent>
     </Card>
   );

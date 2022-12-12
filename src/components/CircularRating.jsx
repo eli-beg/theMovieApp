@@ -43,15 +43,15 @@ const styles = {
   },
   circleTitleContainer: {
     zIndex: "2",
-    height: "100%",
-    width: "100%",
+    height: "80%",
+    width: "80%",
     position: "relative",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
   circleTitle: {
-    fontSize: { xs: "0.6rem", md: "0.9rem" },
+    fontSize: "80%",
     fontWeight: "700",
     color: "white",
   },

@@ -230,7 +230,7 @@ const styles = {
     alignItems: "center",
   },
   circularProgressContainerItem: {
-    width: "60px",
+    width: { xs: "40px", md: "60px" },
     height: "60px",
     display: "flex",
     justifyContent: "center",
