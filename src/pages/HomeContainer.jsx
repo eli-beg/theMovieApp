@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Box, useTheme, useMediaQuery } from "@mui/material";
 import SearchBanner from "../components/Home/SearchBanner";
 import { getBannerImage } from "../api/searchItems";
-import MainCard from "../components/MainCard/MainCard";
 import { getTopRatedMovies } from "../api/carrouselItems";
 import { setImageUrl } from "../utils/setImageUrl";
+import Slider from "../components/Slider";
 
 const HomeContainer = () => {
   const [imageBanner, setImageBanner] = useState(null);
@@ -54,7 +54,7 @@ const HomeContainer = () => {
   };
 
   return (
-    <Box>
+    <Box display="flex" flexDirection="column" justifyContent="center">
       <SearchBanner
         imageBanner={imageBanner}
         matches={matches}
@@ -62,16 +62,20 @@ const HomeContainer = () => {
         handleSubmitSearch={handleSubmitSearch}
         handleChangeSearchValue={handleChangeSearchValue}
       />
-      <Box display="flex" flexWrap="wrap">
-        {topRatedMovies &&
-          topRatedMovies.map((movie) => (
-            <MainCard
-              key={movie.id}
-              item={movie}
-              handleOpenDetails={handleOpenDetails}
-              category="movies"
-            />
-          ))}
+      <Box
+        display="flex"
+        flexDirection="row"
+        width="100%"
+        height=" 1080px"
+        flexWrap="wrap"
+      >
+        {topRatedMovies ? (
+          <Slider
+            items={topRatedMovies}
+            handleOpenDetails={handleOpenDetails}
+            category="movies"
+          />
+        ) : null}
       </Box>
     </Box>
   );

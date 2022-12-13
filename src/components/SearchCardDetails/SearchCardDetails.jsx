@@ -158,7 +158,6 @@ const styles = {
     color: "white",
     textAlign: "left",
     flexGrow: "1",
-    // backgroundColor: "green",
   },
   detailsSubtitleContainer: {
     width: { xs: "80%", md: "80%" },
@@ -166,7 +165,6 @@ const styles = {
     flexDirection: "row",
     justifyContent: "flex-start",
     flexGrow: "1",
-    // backgroundColor: "pink",
     flexWrap: "wrap",
   },
   releaseDate: {
@@ -197,7 +195,6 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-around",
     flexGrow: "2",
-    // backgroundColor: "blue",
   },
   tagline: {
     fontSize: { xs: "0.7rem", md: "1.2rem" },

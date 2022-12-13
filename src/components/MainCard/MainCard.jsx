@@ -5,7 +5,6 @@ import imageNotFound from "../../images/imagenotfound.png";
 import CircularRating from "../CircularRating";
 
 const MainCard = ({ item, handleOpenDetails, category }) => {
-  console.log(item);
   return (
     <Card sx={styles.cardContainer}>
       <CardMedia
@@ -36,7 +35,8 @@ export default MainCard;
 
 const styles = {
   cardContainer: {
-    marginLeft: "80px",
+    marginLeft: "20px",
+    marginRight: "20px",
     marginBottom: "50px",
     height: "300px",
     width: "150px",
