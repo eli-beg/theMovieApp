@@ -4,6 +4,7 @@ import BrandLogo from "./BrandLogo";
 import HideOnScroll from "./HideOnScroll";
 import Navbar from "./Navbar/Navbar";
 import BurgerMenu from "./Navbar/BurguerMenu";
+import { Link } from "react-router-dom";
 
 const Header = ({
   props,
@@ -23,16 +24,18 @@ const Header = ({
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ display: "flex" }}>
-            {/* <Link to="/"> */}
-            <BrandLogo breakpointDisplay="md" breakpointHidden="xs" />
-
+            <Link to="/">
+              <BrandLogo breakpointDisplay="md" breakpointHidden="xs" />
+            </Link>
             <BurgerMenu
               menu={menu}
               handleCloseMenu={handleCloseMenu}
               handleOpenMenu={handleOpenMenu}
               menuIsOpen={menuIsOpen}
             />
-            <BrandLogo breakpointDisplay="xs" breakpointHidden="md" />
+            <Link to="/">
+              <BrandLogo breakpointDisplay="xs" breakpointHidden="md" />
+            </Link>
             <Navbar menu={menu} />
           </Toolbar>
         </Container>

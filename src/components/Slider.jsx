@@ -1,13 +1,14 @@
 import React, { useCallback, useState, useEffect } from "react";
 import NextIcon from "./NextIcon";
 import MainCard from "./MainCard/MainCard";
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Slide, useMediaQuery, useTheme } from "@mui/material";
 
 const Slider = ({ items, handleOpenDetails, category }) => {
-  const [itemsToRender, setItemsToRender] = useState(null);
+  const [itemsToRender, setItemsToRender] = useState([]);
   const [steps, setSteps] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [slideIn, setSlideIn] = useState(true);
+  const [direction, setDirection] = useState(null);
   const theme = useTheme();
   const matchesUp = useMediaQuery(theme.breakpoints.up("lg"));
   const matchesBetween = useMediaQuery(theme.breakpoints.between("md", "lg"));
@@ -34,17 +35,29 @@ const Slider = ({ items, handleOpenDetails, category }) => {
     getItemsArray();
   }, [getItemsArray]);
 
-  const navigateNext = () => {
+  const navigateNext = (direction) => {
+    const oppDirection = direction === "right" ? "left" : "right";
+    setDirection(direction);
+    setSlideIn(false);
+
     setCurrentIndex((prevState) => {
       const nextState = prevState + steps;
       if (nextState >= items.length) {
         return prevState;
       }
+
       return nextState;
     });
+    setTimeout(() => {
+      setDirection(oppDirection);
+      setSlideIn(true);
+    }, 1000);
   };
 
-  const navigatePreviuos = () => {
+  const navigatePreviuos = (direction) => {
+    const oppDirection = direction === "left" ? "right" : "left";
+    setDirection(direction);
+    setSlideIn(false);
     setCurrentIndex((prevState) => {
       const previuosState = prevState - steps;
       if (previuosState < 0) {
@@ -52,28 +65,43 @@ const Slider = ({ items, handleOpenDetails, category }) => {
       }
       return previuosState;
     });
+
+    setTimeout(() => {
+      setDirection(oppDirection);
+      setSlideIn(true);
+    }, 1000);
   };
 
   return (
     <Box sx={styles.sliderContainer}>
       <Box sx={styles.iconContainer}>
         {currentIndex !== 0 ? (
-          <NextIcon direction="left" navigatePreviuos={navigatePreviuos} />
+          <NextIcon
+            direction="left"
+            navigatePreviuos={() => navigatePreviuos("left")}
+          />
         ) : null}
       </Box>
-      <Box sx={styles.cardsContainer}>
-        {itemsToRender &&
-          itemsToRender.map((item) => (
+      <Slide in={slideIn} direction={direction}>
+        <Box sx={styles.cardsContainer}>
+          {itemsToRender?.map((item) => (
             <MainCard
               item={item}
               handleOpenDetails={handleOpenDetails}
               category={category}
             />
           ))}
-      </Box>
+        </Box>
+      </Slide>
+
       <Box sx={styles.iconContainer}>
         {currentIndex < items.length ? (
-          <NextIcon direction="right" navigateNext={navigateNext} />
+          <NextIcon
+            direction="right"
+            navigateNext={() => {
+              navigateNext("right");
+            }}
+          />
         ) : null}
       </Box>
     </Box>
