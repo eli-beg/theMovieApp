@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 const Header = ({
   props,
   menu,
-  handleCloseMenu,
-  handleOpenMenu,
+  handleCloseMenuMobile,
+  handleOpenMenuMobile,
   menuIsOpen,
 }) => {
   return (
@@ -29,8 +29,8 @@ const Header = ({
             </Link>
             <BurgerMenu
               menu={menu}
-              handleCloseMenu={handleCloseMenu}
-              handleOpenMenu={handleOpenMenu}
+              handleCloseMenuMobile={handleCloseMenuMobile}
+              handleOpenMenuMobile={handleOpenMenuMobile}
               menuIsOpen={menuIsOpen}
             />
             <Link to="/">

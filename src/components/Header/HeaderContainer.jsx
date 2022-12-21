@@ -30,19 +30,20 @@ const HeaderContainer = () => {
       menuItems: [{ id: "1", item: "Popular People" }],
     },
   ];
-  const handleOpenMenu = () => {
+  const handleOpenMenuMobile = () => {
+    console.log("abriendo");
     setMenuIsOpen(true);
   };
 
-  const handleCloseMenu = () => {
+  const handleCloseMenuMobile = () => {
     setMenuIsOpen(false);
   };
 
   return (
     <Header
       menu={menu}
-      handleOpenMenu={handleOpenMenu}
-      handleCloseMenu={handleCloseMenu}
+      handleOpenMenuMobile={handleOpenMenuMobile}
+      handleCloseMenuMobile={handleCloseMenuMobile}
       menuIsOpen={menuIsOpen}
     />
   );
