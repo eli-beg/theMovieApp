@@ -1,10 +1,9 @@
 import React from "react";
-import { AppBar, Container, Toolbar } from "@mui/material";
-import BrandLogo from "./BrandLogo";
+import { AppBar, Box, Container, Toolbar } from "@mui/material";
 import HideOnScroll from "./HideOnScroll";
 import Navbar from "./Navbar/Navbar";
 import BurgerMenu from "./Navbar/BurguerMenu";
-import { Link } from "react-router-dom";
+import logoHeader from "../../images/logoHeader.svg";
 
 const Header = ({
   props,
@@ -12,31 +11,68 @@ const Header = ({
   handleCloseMenuMobile,
   handleOpenMenuMobile,
   menuIsOpen,
+  navigate,
+  setActiveButton,
+  activeButton,
 }) => {
+  const handleNavigateToHome = () => {
+    setActiveButton(false);
+    navigate("/");
+  };
   return (
     <HideOnScroll {...props}>
       <AppBar
-        position="fixed"
         sx={{
+          position: "fixed",
           backgroundColor: "rgb(13, 37, 63)",
           zIndex: 1300,
         }}
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ display: "flex" }}>
-            <Link to="/">
-              <BrandLogo breakpointDisplay="md" breakpointHidden="xs" />
-            </Link>
+            <Box
+              component="img"
+              src={logoHeader}
+              alt="tmdb-logo"
+              sx={{
+                maxWidth: "7rem",
+                display: {
+                  md: "flex",
+                  xs: "none",
+                  width: "100%",
+                  cursor: "pointer",
+                },
+              }}
+              onClick={handleNavigateToHome}
+            />
             <BurgerMenu
               menu={menu}
               handleCloseMenuMobile={handleCloseMenuMobile}
               handleOpenMenuMobile={handleOpenMenuMobile}
               menuIsOpen={menuIsOpen}
+              navigate={navigate}
             />
-            <Link to="/">
-              <BrandLogo breakpointDisplay="xs" breakpointHidden="md" />
-            </Link>
-            <Navbar menu={menu} />
+            <Box
+              component="img"
+              src={logoHeader}
+              alt="tmdb-logo"
+              sx={{
+                maxWidth: "7rem",
+                display: {
+                  xs: "flex",
+                  md: "none",
+                  width: "100%",
+                  cursor: "pointer",
+                },
+              }}
+              onClick={handleNavigateToHome}
+            />
+            <Navbar
+              menu={menu}
+              navigate={navigate}
+              activeButton={activeButton}
+              setActiveButton={setActiveButton}
+            />
           </Toolbar>
         </Container>
       </AppBar>

@@ -1,12 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SearchCardDetails from "../components/SearchCardDetails/SearchCardDetails";
-import {
-  getMovieDetailsSearch,
-  getPersonDetailsSearch,
-  getTrailer,
-  getTvDetailsSearch,
-} from "../api/searchItems";
+import { getDetailsSearch, getTrailer } from "../api/searchItems";
 import { setImageUrl } from "../utils/setImageUrl";
 import { setUrlTrailer } from "../utils/setUrlTrailer";
 import { setMinutesToHours } from "../utils/setMinutesToHours";
@@ -17,7 +12,7 @@ import { Box, Typography } from "@mui/material";
 
 const SearchCardDetailsContainer = () => {
   const [dataSearchDetails, setDataSearchDetails] = useState(null);
-  const [dataSimilarMovies, setDataSimilarMovies] = useState(null);
+  const [dataSimilar, setDataSimilar] = useState(null);
   const [imageBanner, setImageBanner] = useState(null);
   const [imagePoster, setImagePoster] = useState(null);
   const [runtimeHours, setRuntimeHours] = useState(null);
@@ -28,37 +23,17 @@ const SearchCardDetailsContainer = () => {
 
   const getSearchDetails = useCallback(async () => {
     try {
-      if (search.category === "movies") {
-        const dataMovieDetails = await getMovieDetailsSearch(search.id);
-        if (dataMovieDetails.status === 200) {
-          setDataSearchDetails(dataMovieDetails.data);
-        }
-        const dataTrailer = await getTrailer("movie", search.id);
-        if (dataTrailer.status === 200) {
-          setDataTrailer(dataTrailer.data.results);
-        }
-        const dataSimilarMovies = await getSimilarMovies(search.id);
-        if (dataSimilarMovies.status === 200) {
-          setDataSimilarMovies(dataSimilarMovies.data.results);
-        }
+      const dataDetails = await getDetailsSearch(search.category, search.id);
+      if (dataDetails.status === 200) {
+        setDataSearchDetails(dataDetails.data);
       }
-
-      if (search.category === "tv") {
-        const dataTvDetails = await getTvDetailsSearch(search.id);
-        if (dataTvDetails.status === 200) {
-          setDataSearchDetails(dataTvDetails.data);
-        }
-        const dataTrailer = await getTrailer("tv", search.id);
-        if (dataTrailer.status === 200) {
-          setDataTrailer(dataTrailer.data.results);
-        }
+      const dataTrailer = await getTrailer(search.category, search.id);
+      if (dataTrailer.status === 200) {
+        setDataTrailer(dataTrailer.data.results);
       }
-
-      if (search.category === "person") {
-        const dataPersonDetails = await getPersonDetailsSearch(search.id);
-        if (dataPersonDetails.status === 200) {
-          setDataSearchDetails(dataPersonDetails.data);
-        }
+      const dataSimilar = await getSimilarMovies(search.category, search.id);
+      if (dataSimilar.status === 200) {
+        setDataSimilar(dataSimilar.data.results);
       }
     } catch (error) {
       console.error(error);
@@ -120,11 +95,11 @@ const SearchCardDetailsContainer = () => {
         </Typography>
       </Box>
 
-      {dataSimilarMovies ? (
+      {dataSimilar ? (
         <Slider
-          items={dataSimilarMovies}
+          items={dataSimilar}
           handleOpenDetails={handleOpenDetails}
-          category="movies"
+          category="movie"
         />
       ) : null}
     </>

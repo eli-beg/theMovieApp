@@ -14,7 +14,7 @@ const MultiSearchContainer = () => {
   const [dataTvSearch, setDataTvSearch] = useState(null);
   const [dataPersonSearch, setDataPersonSearch] = useState(null);
   const [dataSearch, setDataSearch] = useState(null);
-  const [activeButton, setActiveButton] = useState("Movies");
+  const [activeButton, setActiveButton] = useState(null);
   const search = useParams();
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const MultiSearchContainer = () => {
       const dataMovie = await getMovieSearch(search.dataSearch);
       if (dataMovie.status === 200) {
         setDataMovieSearch(dataMovie.data.results);
-        if (search.category === "movies") {
+        if (search.category === "movie") {
           setDataSearch(dataMovie.data.results);
         }
         if (!search.category) {

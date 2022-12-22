@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 
 const HeaderContainer = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [activeButton, setActiveButton] = useState(false);
+
+  const navigate = useNavigate();
+
   const menu = [
     {
       id: 1,
@@ -31,7 +36,6 @@ const HeaderContainer = () => {
     },
   ];
   const handleOpenMenuMobile = () => {
-    console.log("abriendo");
     setMenuIsOpen(true);
   };
 
@@ -45,6 +49,9 @@ const HeaderContainer = () => {
       handleOpenMenuMobile={handleOpenMenuMobile}
       handleCloseMenuMobile={handleCloseMenuMobile}
       menuIsOpen={menuIsOpen}
+      navigate={navigate}
+      activeButton={activeButton}
+      setActiveButton={setActiveButton}
     />
   );
 };

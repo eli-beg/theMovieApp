@@ -59,7 +59,7 @@ const HomeContainer = () => {
 
   const handleSubmitSearch = async (e) => {
     e.preventDefault();
-    const category = "movies";
+    const category = "movie";
     navigate(`/search/${category}/${dataSearch}`);
   };
 
@@ -102,7 +102,7 @@ const HomeContainer = () => {
           <Slider
             items={topRatedMovies}
             handleOpenDetails={handleOpenDetails}
-            category="movies"
+            category="movie"
           />
         ) : null}
 
@@ -123,7 +123,7 @@ const HomeContainer = () => {
           <Slider
             items={upcomingMovies}
             handleOpenDetails={handleOpenDetails}
-            category="movies"
+            category="movie"
           />
         ) : null}
       </Box>

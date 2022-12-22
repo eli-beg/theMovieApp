@@ -1,14 +1,11 @@
 import React from "react";
 import { Box, Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { navigateToList } from "../../../utils/navigateToList";
 
-const Navbar = ({ menu }) => {
+const Navbar = ({ menu, navigate, activeButton, setActiveButton }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [activeButton, setActiveButton] = useState(false);
-  const navigate = useNavigate();
 
   const handleOpenMenu = (e, id) => {
     setActiveButton(id);
@@ -21,7 +18,6 @@ const Navbar = ({ menu }) => {
   };
 
   const handleOpenItem = (item) => {
-    console.log(item);
     navigate(navigateToList(item));
     setOpenMenu(false);
   };

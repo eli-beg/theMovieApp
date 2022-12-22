@@ -8,25 +8,14 @@ const SearchBar = ({
   handleChangeSearchValue,
 }) => {
   return (
-    <Box
-      sx={{
-        position: "absolute",
-        top: "43%",
-        left: "50%",
-        transform: "translate(-50%,-50%)",
-        width: "80%",
-        zIndex: "3",
-      }}
-    >
+    <Box sx={style.containerSearchBar}>
       <form onSubmit={handleSubmitSearch}>
         <TextField
-          id="outlined-name"
           hiddenLabel
           value={dataSearch}
           onChange={handleChangeSearchValue}
           sx={{
             width: "100%",
-
             "& .MuiInputBase-root": {
               height: matches ? 55 : 34,
             },
@@ -34,20 +23,7 @@ const SearchBar = ({
           placeholder="Search for a movie, tv show, person..."
         />
 
-        <Button
-          variant="contained"
-          type="submit"
-          sx={{
-            position: "absolute",
-            left: "90%",
-            right: 1,
-            zIndex: "4",
-            height: { xs: "36px", md: "55px" },
-            width: { xs: "80px", md: "125px", xl: "180px" },
-            fontSize: { xs: ".7rem", md: "1rem" },
-            backgroundColor: "#00CBB5",
-          }}
-        >
+        <Button variant="contained" type="submit" sx={style.button}>
           Search
         </Button>
       </form>
@@ -56,3 +32,24 @@ const SearchBar = ({
 };
 
 export default SearchBar;
+
+const style = {
+  containerSearchBar: {
+    position: "absolute",
+    top: "43%",
+    left: "50%",
+    transform: "translate(-50%,-50%)",
+    width: "80%",
+    zIndex: "3",
+  },
+  button: {
+    position: "absolute",
+    left: "90%",
+    right: 1,
+    zIndex: "4",
+    height: { xs: "36px", md: "55px" },
+    width: { xs: "80px", md: "125px", xl: "180px" },
+    fontSize: { xs: ".7rem", md: "1rem" },
+    backgroundColor: "#00CBB5",
+  },
+};

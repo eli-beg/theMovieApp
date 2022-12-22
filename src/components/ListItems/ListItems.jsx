@@ -1,11 +1,21 @@
-import { Box } from "@mui/material";
 import React from "react";
+import { Grid } from "@mui/material";
 import SearchCard from "../SearchCard/SearchCard";
 
-const ListItems = ({ dataItem }) => {
-  console.log(dataItem);
+const ListItems = ({ dataItem, handleOpenDetails, category }) => {
   return (
-    <Box>{dataItem && dataItem.map((item) => <SearchCard data={item} />)}</Box>
+    <Grid container spacing="20px" display="flex" justifyContent="center">
+      {dataItem &&
+        dataItem.map((item) => (
+          <Grid item>
+            <SearchCard
+              data={item}
+              handleOpenDetails={handleOpenDetails}
+              category={category}
+            />
+          </Grid>
+        ))}
+    </Grid>
   );
 };
 

@@ -11,9 +11,11 @@ import {
 
 import HamburgerIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import { navigateToList } from "../../../utils/navigateToList";
 
 const BurgerMenu = (props) => {
   const {
+    navigate,
     menu,
     handleOpenMenuMobile,
     handleCloseMenuMobile,
@@ -21,20 +23,15 @@ const BurgerMenu = (props) => {
     MenuIcon = null,
   } = props;
 
-  const handleOpenItem = (id) => {
-    console.log("hola", id);
+  const handleOpenItem = (item) => {
+    navigate(navigateToList(item));
+    handleCloseMenuMobile();
   };
 
   return (
     <Box sx={style.containerMenu}>
       {MenuIcon || (
-        <IconButton
-          size="large"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={handleOpenMenuMobile}
-          color="inherit"
-        >
+        <IconButton onClick={handleOpenMenuMobile}>
           <HamburgerIcon sx={{ color: "white" }} />
         </IconButton>
       )}
@@ -57,7 +54,7 @@ const BurgerMenu = (props) => {
                 <AccordionDetails key={item.id}>
                   <Button
                     sx={style.accordionDetailsButton}
-                    onClick={() => handleOpenItem(item.id)}
+                    onClick={() => handleOpenItem(item)}
                   >
                     {item.item}{" "}
                   </Button>

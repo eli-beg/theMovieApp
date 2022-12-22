@@ -14,9 +14,9 @@ const getUpcomingMovies = async () => {
   return data;
 };
 
-const getSimilarMovies = async (id) => {
+const getSimilarMovies = async (category, id) => {
   const data = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/${category}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
   );
   return data;
 };

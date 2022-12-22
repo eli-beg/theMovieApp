@@ -15,60 +15,11 @@ const SearchBanner = ({
         component="img"
         src={imageBanner}
         alt="img not found"
-        sx={{
-          width: "100%",
-          height: { xs: "320px", md: "423px" },
-          objectFit: "cover",
-          objectPosition: "0px 0px",
-          zIndex: "1",
-        }}
+        sx={style.imageBanner}
       />
-      <Box
-        sx={{
-          position: "absolute",
-          top: { xs: "56px", sm: "64px", md: "68px" },
-          bottom: 0,
-          right: 0,
-          left: 0,
-          backgroundColor: "rgba(3,37,65,0.5)",
-          width: "100%",
-          height: { xs: "320px", md: "423px" },
-          objectFit: "cover",
-          zIndex: "2",
-        }}
-      />
-      <Typography
-        fontSize={{ xs: "1.75rem", lg: "2.2rem" }}
-        fontFamily="Source Sans Pro"
-        fontWeight="700"
-        style={{
-          position: "absolute",
-          color: "white",
-          top: "23%",
-          left: "50%",
-          transform: "translate(-50%,-40%)",
-          textAlign: "left",
-          width: "80%",
-          zIndex: "3",
-        }}
-      >
-        Welcome.
-      </Typography>
-      <Typography
-        fontSize={{ xs: "1.25rem", lg: "2rem" }}
-        fontFamily="Source Sans Pro"
-        fontWeight="400"
-        style={{
-          position: "absolute",
-          color: "white",
-          top: "33%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-          textAlign: "left",
-          width: "80%",
-          zIndex: "3",
-        }}
-      >
+      <Box sx={style.containerBannerShadow} />
+      <Typography sx={style.welcomeTitle}>Welcome.</Typography>
+      <Typography sx={style.subtitle}>
         Millions of movies, TV shows and people to discover. Explore now.
       </Typography>
       <SearchBar
@@ -83,3 +34,51 @@ const SearchBanner = ({
 };
 
 export default SearchBanner;
+
+const style = {
+  imageBanner: {
+    width: "100%",
+    height: { xs: "320px", md: "423px" },
+    objectFit: "cover",
+    objectPosition: "0px 0px",
+    zIndex: "1",
+  },
+  containerBannerShadow: {
+    position: "absolute",
+    top: { xs: "56px", sm: "64px", md: "68px" },
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: "rgba(3,37,65,0.5)",
+    width: "100%",
+    height: { xs: "320px", md: "423px" },
+    objectFit: "cover",
+    zIndex: "2",
+  },
+  welcomeTitle: {
+    position: "absolute",
+    color: "white",
+    top: "23%",
+    left: "50%",
+    transform: "translate(-50%,-40%)",
+    textAlign: "left",
+    width: "80%",
+    zIndex: "3",
+    fontSize: { xs: "1.75rem", lg: "2.2rem" },
+    fontFamily: "Source Sans Pro",
+    fontWeight: "700",
+  },
+  subtitle: {
+    position: "absolute",
+    color: "white",
+    top: "33%",
+    left: "50%",
+    transform: "translate(-50%,-50%)",
+    textAlign: "left",
+    width: "80%",
+    zIndex: "3",
+    fontSize: { xs: "1.25rem", lg: "2rem" },
+    fontFamily: "Source Sans Pro",
+    fontWeight: "400",
+  },
+};
