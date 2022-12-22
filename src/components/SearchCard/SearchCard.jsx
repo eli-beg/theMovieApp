@@ -13,6 +13,7 @@ const SearchCard = ({ data, handleOpenDetails, category }) => {
     name,
     known_for_department,
     first_air_date,
+    original_name,
   } = data;
 
   return (
@@ -55,7 +56,7 @@ const SearchCard = ({ data, handleOpenDetails, category }) => {
             component="span"
             onClick={() => handleOpenDetails(id, category)}
           >
-            {original_title || name}
+            {original_title || name || original_name}
           </Typography>
           <Typography
             fontWeight="600"

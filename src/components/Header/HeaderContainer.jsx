@@ -8,26 +8,26 @@ const HeaderContainer = () => {
       id: 1,
       text: "Movies",
       menuItems: [
-        { id: "1", item: "Popular" },
-        { id: "2", item: "Now Playing" },
-        { id: "3", item: "Upcoming" },
-        { id: "4", item: "Top Rated" },
+        { id: "1movie", item: "Popular" },
+        { id: "2movie", item: "Now Playing" },
+        { id: "3movie", item: "Upcoming" },
+        { id: "4movie", item: "Top Rated" },
       ],
     },
     {
       id: 2,
       text: "TV Shows",
       menuItems: [
-        { id: "1", item: "Popular" },
-        { id: "2", item: "Airing Today" },
-        { id: "3", item: "On Tv" },
-        { id: "4", item: "Top Rated" },
+        { id: "1tv", item: "Popular" },
+        { id: "2tv", item: "Airing Today" },
+        { id: "3tv", item: "On Tv" },
+        { id: "4tv", item: "Top Rated" },
       ],
     },
     {
       id: 3,
       text: "People",
-      menuItems: [{ id: "1", item: "Popular People" }],
+      menuItems: [{ id: "1people", item: "Popular People" }],
     },
   ];
   const handleOpenMenuMobile = () => {

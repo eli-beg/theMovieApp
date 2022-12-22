@@ -4,6 +4,7 @@ import MultiSearchContainer from "../pages/MultiSearchContainer";
 import HomeContainer from "../pages/HomeContainer";
 import MainLayout from "../pages/MainLayout";
 import SearchCardDetailsContainer from "../pages/SearchCardDetailsContainer";
+import ListItemsContainer from "../components/ListItems/ListItemsContainer";
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
             path="/details/:category/:id"
             element={<SearchCardDetailsContainer />}
           />
+          <Route path="/:item/:section" element={<ListItemsContainer />} />
         </Route>
       </Routes>
     </>
