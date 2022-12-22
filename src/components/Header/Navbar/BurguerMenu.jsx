@@ -111,5 +111,6 @@ const style = {
   },
   accordionDetailsButton: {
     color: "white",
+    "&:hover": { backgroundColor: "#00CBB5" },
   },
 };
