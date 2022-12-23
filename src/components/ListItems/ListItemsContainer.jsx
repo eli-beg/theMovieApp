@@ -33,9 +33,7 @@ const ListItemsContainer = () => {
       display="flex"
       flexDirection="row"
       justifyContent="center"
-      sx={{
-        marginTop: "20px",
-      }}
+      margin="40px"
     >
       <ListItems
         dataItem={dataItem}
