@@ -1,6 +1,7 @@
 # MovieApp (WIP) 🚀
 
-A simple project created using ReactJS to show the use of a REST Api
+A simple project created using ReactJS to show the use of a REST Api.
+All movies information came from The Movie Database website (https://www.themoviedb.org/). They have this amazing API (https://developers.themoviedb.org/3/getting-started/introduction) that could be used by any one.
 
 # It Contains:
 
@@ -15,4 +16,10 @@ A simple project created using ReactJS to show the use of a REST Api
 -ReactJs
 -Material UI
 
-All movies information came from The Movie Database website (https://www.themoviedb.org/). They have this amazing API (https://developers.themoviedb.org/3/getting-started/introduction) that could be used by any one.
+# Screenshoots:
+
+![Optinal Text](/src/images/readmescreenshots/movieapp1.jpg)
+![Optinal Text](/src/images/readmescreenshots/movieapp2.jpg)
+![Optinal Text](/src/images/readmescreenshots/movieapp3.jpg)
+![Optinal Text](/src/images/readmescreenshots/movieapp4.jpg)
+![Optinal Text](/src/images/readmescreenshots/movieapp5.jpg)
