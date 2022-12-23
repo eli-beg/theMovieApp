@@ -27,13 +27,15 @@ const SearchCardDetailsContainer = () => {
       if (dataDetails.status === 200) {
         setDataSearchDetails(dataDetails.data);
       }
-      const dataTrailer = await getTrailer(search.category, search.id);
-      if (dataTrailer.status === 200) {
-        setDataTrailer(dataTrailer.data.results);
-      }
-      const dataSimilar = await getSimilarMovies(search.category, search.id);
-      if (dataSimilar.status === 200) {
-        setDataSimilar(dataSimilar.data.results);
+      if (search.category === "movie" || search.category === "tv") {
+        const dataTrailer = await getTrailer(search.category, search.id);
+        if (dataTrailer.status === 200) {
+          setDataTrailer(dataTrailer.data.results);
+        }
+        const dataSimilar = await getSimilarMovies(search.category, search.id);
+        if (dataSimilar.status === 200) {
+          setDataSimilar(dataSimilar.data.results);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -50,6 +52,9 @@ const SearchCardDetailsContainer = () => {
     }
     if (dataSearchDetails && dataSearchDetails.poster_path) {
       setImagePoster(setImageUrl(dataSearchDetails.poster_path));
+    }
+    if (dataSearchDetails && dataSearchDetails.profile_path) {
+      setImagePoster(setImageUrl(dataSearchDetails.profile_path));
     }
     if (dataSearchDetails && typeof dataSearchDetails.runtime === "number") {
       setRuntimeHours(setMinutesToHours(dataSearchDetails.runtime));
