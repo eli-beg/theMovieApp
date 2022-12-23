@@ -19,7 +19,11 @@ All movies information came from The Movie Database website (https://www.themovi
 # Screenshoots:
 
 ![Optinal Text](/src/images/readmescreenshots/movieapp1.jpg)
+
 ![Optinal Text](/src/images/readmescreenshots/movieapp2.jpg)
+
 ![Optinal Text](/src/images/readmescreenshots/movieapp3.jpg)
+
 ![Optinal Text](/src/images/readmescreenshots/movieapp4.jpg)
+
 ![Optinal Text](/src/images/readmescreenshots/movieapp5.jpg)
