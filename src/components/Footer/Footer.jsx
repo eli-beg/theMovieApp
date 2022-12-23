@@ -1,7 +1,8 @@
 import React from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import logoPrimaryFull from "../../images/logoPrimaryFull.svg";
-const Footer = ({ menu }) => {
+
+const Footer = ({ menu, handleNavigateToHome, handleOpenItem }) => {
   return (
     <Grid
       container
@@ -25,7 +26,7 @@ const Footer = ({ menu }) => {
                 cursor: "pointer",
               },
             }}
-            //   onClick={handleNavigateToHome}
+            onClick={handleNavigateToHome}
           />
         </Grid>
       </Grid>
@@ -55,7 +56,11 @@ const Footer = ({ menu }) => {
                   alignContent="flex-start"
                   maxHeight="40px"
                 >
-                  <Button key={item.id} width="100%">
+                  <Button
+                    key={item.id}
+                    width="100%"
+                    onClick={() => handleOpenItem(item)}
+                  >
                     {item.item}
                   </Button>
                 </Grid>

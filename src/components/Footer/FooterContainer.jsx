@@ -1,8 +1,11 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
+import { navigateToList } from "../../utils/navigateToList";
 
 const FooterContainer = () => {
+  const navigate = useNavigate();
   const menu = [
     {
       id: 1,
@@ -30,6 +33,12 @@ const FooterContainer = () => {
       menuItems: [{ id: "1people", item: "Popular People" }],
     },
   ];
+  const handleNavigateToHome = () => {
+    navigate("/");
+  };
+  const handleOpenItem = (item) => {
+    navigate(navigateToList(item));
+  };
   return (
     <Grid
       container
@@ -37,7 +46,11 @@ const FooterContainer = () => {
       minHeight="280px"
       sx={{ backgroundColor: "rgb(13, 37, 63)" }}
     >
-      <Footer menu={menu} />
+      <Footer
+        menu={menu}
+        handleNavigateToHome={handleNavigateToHome}
+        handleOpenItem={handleOpenItem}
+      />
     </Grid>
   );
 };
