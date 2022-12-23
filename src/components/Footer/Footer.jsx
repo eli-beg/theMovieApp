@@ -6,22 +6,21 @@ const Footer = ({ menu }) => {
     <Grid
       container
       display="flex"
-      flexDirection="row"
+      flexDirection={{ md: "row", xs: "column" }}
       justifyContent="center"
       alignItems="center"
       height="100%"
     >
-      <Grid item container justifyContent="center" xs={3}>
+      <Grid item container justifyContent="center" md={3}>
         <Grid item>
           <Box
             component="img"
             src={logoPrimaryFull}
             alt="tmdb-logo"
             sx={{
-              maxWidth: "10rem",
+              maxWidth: { md: "10rem", xs: "8rem" },
+              marginTop: "20px",
               display: {
-                md: "flex",
-                xs: "none",
                 width: "100%",
                 cursor: "pointer",
               },
@@ -30,7 +29,7 @@ const Footer = ({ menu }) => {
           />
         </Grid>
       </Grid>
-      <Grid item container flexDirection="row" xs={5} marginTop="40px">
+      <Grid item container flexDirection="row" md={5} margin="30px">
         {menu &&
           menu.map((page) => (
             <Grid item container xs={4} alignContent="flex-start">
