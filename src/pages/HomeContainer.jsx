@@ -3,11 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Box, useTheme, useMediaQuery, Typography } from "@mui/material";
 import SearchBanner from "../components/Home/SearchBanner";
 import { getBannerImage } from "../api/searchItems";
-import {
-  getPopularMovies,
-  getTopRatedMovies,
-  getUpcomingMovies,
-} from "../api/carrouselItems";
+import { getTopRatedMovies, getUpcomingMovies } from "../api/carrouselItems";
 import { setImageUrl } from "../utils/setImageUrl";
 import Slider from "../components/Slider";
 
@@ -15,7 +11,7 @@ const HomeContainer = () => {
   const [imageBanner, setImageBanner] = useState(null);
   const [topRatedMovies, setTopRatedMovies] = useState(null);
   const [upcomingMovies, setUpcomingMovies] = useState(null);
-  const [popularMovies, setPopularMovies] = useState(null);
+
   const [dataSearch, setDataSearch] = useState("");
   const theme = useTheme();
   const navigate = useNavigate();
@@ -39,10 +35,6 @@ const HomeContainer = () => {
       const dataUpcomingMovies = await getUpcomingMovies();
       if (dataUpcomingMovies.status === 200) {
         setUpcomingMovies(dataUpcomingMovies.data.results);
-      }
-      const dataPopularMovies = await getPopularMovies();
-      if (dataPopularMovies.status === 200) {
-        setPopularMovies(dataPopularMovies.data.results);
       }
     } catch (error) {
       console.error(error);
