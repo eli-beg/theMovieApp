@@ -68,7 +68,12 @@ const HomeContainer = () => {
   };
 
   return (
-    <Box display="flex" flexDirection="column" justifyContent="center">
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      marginBottom="40px"
+    >
       <SearchBanner
         imageBanner={imageBanner}
         matches={matches}
