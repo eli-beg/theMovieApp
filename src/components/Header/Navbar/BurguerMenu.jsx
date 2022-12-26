@@ -73,8 +73,6 @@ export default BurgerMenu;
 const style = {
   containerMenu: {
     display: { xs: "flex", md: "none" },
-    justifyContent: "right",
-    mr: 4,
   },
   containerMenuOpen: {
     width: "100%",
@@ -97,6 +95,7 @@ const style = {
     color: "white",
   },
   accordion: {
+    right: 30,
     backgroundColor: "rgb(13, 37, 63)",
     boxShadow: "none",
   },

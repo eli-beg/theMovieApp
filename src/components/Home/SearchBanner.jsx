@@ -58,7 +58,7 @@ const style = {
   welcomeTitle: {
     position: "absolute",
     color: "white",
-    top: "23%",
+    top: { xs: "16%", lg: "23%" },
     left: "50%",
     transform: "translate(-50%,-40%)",
     textAlign: "left",
@@ -71,7 +71,7 @@ const style = {
   subtitle: {
     position: "absolute",
     color: "white",
-    top: "33%",
+    top: { xs: "26%", lg: "33%" },
     left: "50%",
     transform: "translate(-50%,-50%)",
     textAlign: "left",

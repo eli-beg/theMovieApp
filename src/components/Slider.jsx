@@ -117,13 +117,15 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
+
+    marginLeft: { xs: "-10px" },
   },
   iconContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     height: "300px",
-    width: "60px",
+    width: { xs: "20px", md: "60px" },
   },
   cardsContainer: {
     display: "flex",

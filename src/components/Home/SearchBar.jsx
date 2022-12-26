@@ -36,15 +36,15 @@ export default SearchBar;
 const style = {
   containerSearchBar: {
     position: "absolute",
-    top: "43%",
-    left: "50%",
+    top: { xs: "36%", md: "45%", lg: "48%" },
+    left: { xs: "45%", lg: "50%" },
     transform: "translate(-50%,-50%)",
-    width: "80%",
+    width: { xs: "70%", lg: "80%" },
     zIndex: "3",
   },
   button: {
     position: "absolute",
-    left: "90%",
+    left: { xs: "78%", sm: "87%", lg: "90%" },
     right: 1,
     zIndex: "4",
     height: { xs: "36px", md: "55px" },

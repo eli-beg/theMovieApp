@@ -35,8 +35,8 @@ export default MainCard;
 
 const styles = {
   cardContainer: {
-    marginLeft: "20px",
-    marginRight: "20px",
+    marginLeft: { xs: "3px", md: "15px" },
+    marginRight: { xs: "3px", md: "15px" },
     marginBottom: "50px",
     height: "300px",
     width: "150px",

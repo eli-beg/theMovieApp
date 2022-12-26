@@ -11,6 +11,7 @@ const Footer = ({ menu, handleNavigateToHome, handleOpenItem }) => {
       justifyContent="center"
       alignItems="center"
       height="100%"
+      width="100%"
     >
       <Grid item container justifyContent="center" md={3}>
         <Grid item>
@@ -20,6 +21,7 @@ const Footer = ({ menu, handleNavigateToHome, handleOpenItem }) => {
             alt="tmdb-logo"
             sx={{
               maxWidth: { md: "10rem", xs: "8rem" },
+
               marginTop: "20px",
               display: {
                 width: "100%",
@@ -30,7 +32,7 @@ const Footer = ({ menu, handleNavigateToHome, handleOpenItem }) => {
           />
         </Grid>
       </Grid>
-      <Grid item container flexDirection="row" md={5} margin="30px">
+      <Grid item container flexDirection="row" padding="15px" md={5}>
         {menu &&
           menu.map((page) => (
             <Grid item container xs={4} alignContent="flex-start">
@@ -54,11 +56,12 @@ const Footer = ({ menu, handleNavigateToHome, handleOpenItem }) => {
                   marginTop="3px"
                   display="flex"
                   alignContent="flex-start"
-                  maxHeight="40px"
+                  maxHeight="55px"
                 >
                   <Button
                     key={item.id}
                     width="100%"
+                    sx={{ textAlign: "left" }}
                     onClick={() => handleOpenItem(item)}
                   >
                     {item.item}
