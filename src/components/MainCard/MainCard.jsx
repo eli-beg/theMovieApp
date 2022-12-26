@@ -5,7 +5,6 @@ import imageNotFound from "../../images/imagenotfound.png";
 import CircularRating from "../CircularRating";
 
 const MainCard = ({ item, handleOpenDetails, category }) => {
-  console.log("hola item", item);
   return (
     <Card sx={styles.cardContainer}>
       <CardMedia

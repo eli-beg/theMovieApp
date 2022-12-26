@@ -8,6 +8,7 @@ import { convertUrlSectionToTitle } from "../../utils/convertUrlSectionToTitle";
 const ListItemsContainer = () => {
   const [dataItem, setDataItem] = useState(null);
   const [section, setSection] = useState(null);
+
   const params = useParams();
   const navigate = useNavigate();
 

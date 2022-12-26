@@ -21,7 +21,7 @@ const SearchCardDetails = ({
     name,
     first_air_date,
   } = dataSearchDetails;
-  console.log("hello people", dataSearchDetails);
+
   return (
     <Card sx={styles.cardStyle}>
       {imageBanner ? (

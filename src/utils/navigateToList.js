@@ -23,7 +23,7 @@ export const navigateToList = (item) => {
   if (item.id.includes("tv") && item.item === "Top Rated") {
     return "/tv/top_rated";
   }
-  if (item.id.includes("people") && item.item === "Popular") {
+  if (item.id.includes("people") && item.item === "Popular People") {
     return "/person/popular";
   }
 };

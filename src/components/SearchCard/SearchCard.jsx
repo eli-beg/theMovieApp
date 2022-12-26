@@ -2,25 +2,26 @@ import React from "react";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import imageNotFound from "../../images/imagenotfound.png";
 import { setImageUrl } from "../../utils/setImageUrl";
+import { setItemsArrayToString } from "../../utils/setItemsArrayToString";
 
 const SearchCard = ({ data, handleOpenDetails, category }) => {
   const {
     id,
     original_title,
-    poster_path,
     overview,
     release_date,
     name,
     known_for_department,
     first_air_date,
     original_name,
+    known_for,
   } = data;
-
+  const image = data.profile_path || data.poster_path;
   return (
     <Card sx={style.cardContainer}>
       <CardMedia
         component="img"
-        image={poster_path ? setImageUrl(poster_path) : imageNotFound}
+        image={image ? setImageUrl(image) : imageNotFound}
         alt="img not found"
         sx={{ width: "130px", heigth: "170px", cursor: "pointer" }}
         onClick={() => handleOpenDetails(id, category)}
@@ -41,6 +42,9 @@ const SearchCard = ({ data, handleOpenDetails, category }) => {
         </Box>
 
         <Typography sx={style.overview}>{overview}</Typography>
+        <Typography sx={style.overview}>
+          {known_for ? setItemsArrayToString(known_for) : null}
+        </Typography>
       </CardContent>
     </Card>
   );

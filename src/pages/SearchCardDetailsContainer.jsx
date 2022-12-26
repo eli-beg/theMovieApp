@@ -5,7 +5,7 @@ import { getDetailsSearch, getTrailer } from "../api/searchItems";
 import { setImageUrl } from "../utils/setImageUrl";
 import { setUrlTrailer } from "../utils/setUrlTrailer";
 import { setMinutesToHours } from "../utils/setMinutesToHours";
-import { setGenresArrayToString } from "../utils/setGenresArrayToString";
+import { setItemsArrayToString } from "../utils/setItemsArrayToString";
 import { getSimilarMovies } from "../api/carrouselItems";
 import Slider from "../components/Slider";
 import { Box, Typography } from "@mui/material";
@@ -63,7 +63,7 @@ const SearchCardDetailsContainer = () => {
       setRuntimeHours(setMinutesToHours(dataSearchDetails.runtime));
     }
     if (dataSearchDetails && dataSearchDetails.genres) {
-      setGenres(setGenresArrayToString(dataSearchDetails.genres));
+      setGenres(setItemsArrayToString(dataSearchDetails.genres));
     }
   }, [dataSearchDetails]);
 

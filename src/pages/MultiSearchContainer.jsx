@@ -102,7 +102,7 @@ const MultiSearchContainer = () => {
             activeButton={activeButton}
           />
         </Grid>{" "}
-        <Grid item container lg={9} spacing="20">
+        <Grid item container lg={9} spacing="20" marginBottom="40px">
           {dataSearch &&
             dataSearch.map((data) =>
               data.original_title || data.name ? (
