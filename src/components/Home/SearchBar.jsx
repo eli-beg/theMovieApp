@@ -44,7 +44,7 @@ const style = {
   },
   button: {
     position: "absolute",
-    left: { xs: "78%", sm: "87%", lg: "90%" },
+    left: { xs: "85%", sm: "87%", lg: "90%" },
     right: 1,
     zIndex: "4",
     height: { xs: "36px", md: "55px" },

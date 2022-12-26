@@ -18,7 +18,7 @@ const SearchBanner = ({
         sx={style.imageBanner}
       />
       <Box sx={style.containerBannerShadow} />
-      <Typography sx={style.welcomeTitle}>Welcome.</Typography>
+      <Typography sx={style.welcomeTitle}>Welcome</Typography>
       <Typography sx={style.subtitle}>
         Millions of movies, TV shows and people to discover. Explore now.
       </Typography>
