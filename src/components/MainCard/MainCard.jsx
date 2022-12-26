@@ -5,6 +5,7 @@ import imageNotFound from "../../images/imagenotfound.png";
 import CircularRating from "../CircularRating";
 
 const MainCard = ({ item, handleOpenDetails, category }) => {
+  console.log("hola item", item);
   return (
     <Card sx={styles.cardContainer}>
       <CardMedia
@@ -23,9 +24,12 @@ const MainCard = ({ item, handleOpenDetails, category }) => {
           onClick={() => handleOpenDetails(item.id, category)}
           sx={styles.title}
         >
-          {item.title}
+          {item.title || item.name}
         </Typography>
-        <Typography sx={styles.release_date}> {item.release_date}</Typography>
+        <Typography sx={styles.release_date}>
+          {" "}
+          {item.release_date || item.first_air_date}
+        </Typography>
       </CardContent>
     </Card>
   );
@@ -49,6 +53,7 @@ const styles = {
     backgroundColor: "#c8c8c8",
     backgroundSize: "50%",
     overflow: "hidden",
+    height: "220px",
   },
   circularRatingContainer: {
     position: "absolute",

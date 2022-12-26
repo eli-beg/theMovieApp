@@ -9,6 +9,7 @@ import { setGenresArrayToString } from "../utils/setGenresArrayToString";
 import { getSimilarMovies } from "../api/carrouselItems";
 import Slider from "../components/Slider";
 import { Box, Typography } from "@mui/material";
+import { convertUrlSectionToTitle } from "../utils/convertUrlSectionToTitle";
 
 const SearchCardDetailsContainer = () => {
   const [dataSearchDetails, setDataSearchDetails] = useState(null);
@@ -17,6 +18,7 @@ const SearchCardDetailsContainer = () => {
   const [imagePoster, setImagePoster] = useState(null);
   const [runtimeHours, setRuntimeHours] = useState(null);
   const [dataTrailer, setDataTrailer] = useState(null);
+  const [category, setCategory] = useState(null);
   const [genres, setGenres] = useState(null);
   const search = useParams();
   const navigate = useNavigate();
@@ -35,6 +37,7 @@ const SearchCardDetailsContainer = () => {
         const dataSimilar = await getSimilarMovies(search.category, search.id);
         if (dataSimilar.status === 200) {
           setDataSimilar(dataSimilar.data.results);
+          setCategory(convertUrlSectionToTitle(search.category));
         }
       }
     } catch (error) {
@@ -86,7 +89,14 @@ const SearchCardDetailsContainer = () => {
           handleNavigateToTrailer={handleNavigateToTrailer}
         />
       )}
-      <Box sx={{ width: "100%", position: "relative", marginTop: "80px" }}>
+      <Box
+        sx={{
+          width: "100%",
+          position: "relative",
+          marginTop: "80px",
+          marginBottom: "50px",
+        }}
+      >
         <Typography
           sx={{
             fontWeight: "600",
@@ -96,17 +106,16 @@ const SearchCardDetailsContainer = () => {
             marginLeft: "115px",
           }}
         >
-          Similar Movies
+          {category && category}
         </Typography>
+        {dataSimilar ? (
+          <Slider
+            items={dataSimilar}
+            handleOpenDetails={handleOpenDetails}
+            category="movie"
+          />
+        ) : null}
       </Box>
-
-      {dataSimilar ? (
-        <Slider
-          items={dataSimilar}
-          handleOpenDetails={handleOpenDetails}
-          category="movie"
-        />
-      ) : null}
     </>
   );
 };

@@ -1,13 +1,22 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import SearchCard from "../SearchCard/SearchCard";
 
-const ListItems = ({ dataItem, handleOpenDetails, category }) => {
+const ListItems = ({ dataItem, handleOpenDetails, category, section }) => {
   return (
-    <Grid container spacing="20px" display="flex" justifyContent="center">
+    <Grid container spacing="20px" xs={12}>
+      {section ? (
+        <Grid item width="33%" display="flex" justifyContent="center">
+          <Typography
+            sx={{ textAlign: "left", fontWeight: "600", fontSize: "1.2rem" }}
+          >
+            {section}
+          </Typography>
+        </Grid>
+      ) : null}
       {dataItem &&
         dataItem.map((item) => (
-          <Grid item>
+          <Grid item width="100%" display="flex" justifyContent="center">
             <SearchCard
               data={item}
               handleOpenDetails={handleOpenDetails}
