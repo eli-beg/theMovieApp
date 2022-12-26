@@ -19,6 +19,9 @@ const SearchBar = ({
             "& .MuiInputBase-root": {
               height: matches ? 55 : 34,
             },
+            "& input::placeholder": {
+              fontSize: { xs: "0.8rem", md: "1rem" },
+            },
           }}
           placeholder="Search for a movie, tv show, person..."
         />
