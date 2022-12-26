@@ -95,7 +95,6 @@ const style = {
     color: "white",
   },
   accordion: {
-    right: 30,
     backgroundColor: "rgb(13, 37, 63)",
     boxShadow: "none",
   },
