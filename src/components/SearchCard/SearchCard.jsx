@@ -55,7 +55,6 @@ export default SearchCard;
 const style = {
   cardContainer: {
     display: "flex",
-    width: { xs: 330, sm: 500, md: 800, lg: 1080 },
     maxHeight: "170px",
     borderRadius: "10px",
     boxShadow: "4",

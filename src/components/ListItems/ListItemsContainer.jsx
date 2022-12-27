@@ -36,8 +36,10 @@ const ListItemsContainer = () => {
     <Box
       marginTop="40px"
       marginBottom="40px"
+      marginLeft="5px"
       display="flex"
       justifyContent="center"
+      xs={12}
     >
       <ListItems
         dataItem={dataItem}

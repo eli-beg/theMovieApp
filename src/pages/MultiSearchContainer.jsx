@@ -94,7 +94,13 @@ const MultiSearchContainer = () => {
           ml: "0",
         }}
       >
-        <Grid item lg={3} display="flex" justifyContent="center">
+        <Grid
+          item
+          lg={3}
+          display="flex"
+          justifyContent="center"
+          marginTop="20px"
+        >
           <SearchCategoriesContainer
             items={items}
             handleDataSearch={handleDataSearch}
@@ -102,11 +108,20 @@ const MultiSearchContainer = () => {
             activeButton={activeButton}
           />
         </Grid>{" "}
-        <Grid item container lg={9} spacing="20" marginBottom="40px">
+        <Grid
+          item
+          container
+          display="flex"
+          justifyContent="center"
+          lg={9}
+          spacing="20"
+          marginTop="5px"
+          marginBottom="20px"
+        >
           {dataSearch &&
             dataSearch.map((data) =>
               data.original_title || data.name ? (
-                <Grid item key={data.id}>
+                <Grid item key={data.id} xs={11}>
                   <SearchCard
                     data={data}
                     handleOpenDetails={handleOpenDetails}
