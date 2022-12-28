@@ -48,20 +48,10 @@ const SearchCategoriesContainer = ({
                 backgroundColor: activeButton === item.name ? "#eceff1" : null,
               }}
             >
-              <Typography
-                fontFamily="Source Sans Pro"
-                fontWeight="600"
-                textAlign="left"
-                marginLeft="4px"
-              >
+              <Typography fontWeight="600" textAlign="left" marginLeft="4px">
                 {item.name}
               </Typography>
-              <Typography
-                fontFamily="Source Sans Pro"
-                fontWeight="600"
-                textAlign="right"
-                marginRight="5px"
-              >
+              <Typography fontWeight="600" textAlign="right" marginRight="5px">
                 {item.length}
               </Typography>
             </TextButton>

@@ -8,6 +8,7 @@ import {
 } from "../api/searchItems";
 import SearchCard from "../components/SearchCard/SearchCard";
 import SearchCategoriesContainer from "../components/SearchCategories/SearchCategoriesContainer";
+import { navigateToSearch } from "../utils/navigateToSearch";
 
 const MultiSearchContainer = () => {
   const [dataMovieSearch, setDataMovieSearch] = useState(null);
@@ -52,7 +53,9 @@ const MultiSearchContainer = () => {
   }, [search]);
 
   const handleDataSearch = (name) => {
-    navigate(`/search/${name.toLowerCase()}/${search.dataSearch}`);
+    const data = search.dataSearch;
+    const url = navigateToSearch(name);
+    navigate(`${url}${data}`);
   };
 
   useEffect(() => {
